@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Twinvision.BolRetailerApi
 {
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about commisions
+    /// </summary>
     public class Commisions : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;

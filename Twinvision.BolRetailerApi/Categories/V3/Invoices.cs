@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Twinvision.BolRetailerApi
 {
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about invoices
+    /// </summary>
     public class Invoices : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;

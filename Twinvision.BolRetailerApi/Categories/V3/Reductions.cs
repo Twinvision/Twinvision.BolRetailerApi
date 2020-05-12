@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Twinvision.BolRetailerApi
 {
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about reductions
+    /// </summary>
     public class Reductions : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;

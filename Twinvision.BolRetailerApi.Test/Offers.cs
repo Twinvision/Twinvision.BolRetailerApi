@@ -17,6 +17,7 @@ namespace Twinvision.BolRetailerApi.Test
         public string testClientSecret = null;
 
         IConfiguration Configuration { get; set; }
+
         [TestInitialize]
         public async Task Initialize()
         {
@@ -87,8 +88,10 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var fulfilment = new Fulfilment(FulFilmentType.FBB);
-            var offerUpdate = new UpdateOffer(fulfilment);
-            offerUpdate.OnHoldByRetailer = true;
+            var offerUpdate = new UpdateOffer(fulfilment)
+            {
+                OnHoldByRetailer = true
+            };
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.UpdateOffer(firstOffer.OfferId.ToString(), offerUpdate);
         }

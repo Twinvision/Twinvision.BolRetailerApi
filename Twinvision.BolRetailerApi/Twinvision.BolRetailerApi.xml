@@ -24,6 +24,11 @@
             <param name="response">A HttpResponseMessage containing json</param>
             <returns></returns>
         </member>
+        <member name="T:Twinvision.BolRetailerApi.Commisions">
+            <summary>
+            Contains all functions used to communicate to BOL about commisions
+            </summary>
+        </member>
         <member name="M:Twinvision.BolRetailerApi.Commisions.GetCommissions(Twinvision.BolRetailerApi.CommissionQueriesContainer)">
             <summary>
             Gets all commissions and possible reductions by EAN, condition and optionally price. 
@@ -41,6 +46,26 @@
             <param name="condition">The condition of the offer.</param>
             <param name="price">The price of the product with a period as a decimal separator. The price should always have two decimals precision.</param>
             <returns></returns>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Inbounds">
+            <summary>
+            Contains all functions used to communicate to BOL about inbounds
+            </summary>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Insights">
+            <summary>
+            Contains all functions used to communicate to BOL about insights
+            </summary>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Inventory">
+            <summary>
+            Contains all functions used to communicate to BOL about the inventory
+            </summary>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Invoices">
+            <summary>
+            Contains all functions used to communicate to BOL about invoices
+            </summary>
         </member>
         <member name="M:Twinvision.BolRetailerApi.Invoices.GetAllInvoices(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
@@ -72,6 +97,11 @@
             <param name="invoiceId">The id of the invoice.</param>
             <param name="page">The page to get. Each page contains a maximum of 110.000 lines.</param>
             <returns></returns>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Offers">
+            <summary>
+            Contains all functions used to communicate to BOL about offers
+            </summary>
         </member>
         <member name="M:Twinvision.BolRetailerApi.Offers.CreateNewOffer(Twinvision.BolRetailerApi.CreateOffer)">
             <summary>
@@ -144,6 +174,11 @@
             <param name="stock">New stock for the offer.</param>
             <returns></returns>
         </member>
+        <member name="T:Twinvision.BolRetailerApi.Orders">
+            <summary>
+            Contains all functions used to communicate to BOL about orders
+            </summary>
+        </member>
         <member name="M:Twinvision.BolRetailerApi.Orders.GetOpenOrders(System.Int32,Twinvision.BolRetailerApi.FulFilmentType)">
             <summary>
             Gets a paginated list of all open orders sorted by date in descending order.
@@ -178,6 +213,11 @@
             <param name="shippingInfo"></param>
             <returns></returns>
         </member>
+        <member name="T:Twinvision.BolRetailerApi.ProcessStatuses">
+            <summary>
+            Contains all functions used to communicate to BOL about process statuses
+            </summary>
+        </member>
         <member name="M:Twinvision.BolRetailerApi.ProcessStatuses.GetProcessStatusByEntityAndEvent(System.String,Twinvision.BolRetailerApi.ProcessEventType,System.Int32)">
             <summary>
             Retrieve a list of process statuses, which shows information regarding previously executed PUT/POST requests in descending order. 
@@ -204,6 +244,11 @@
             </summary>
             <param name="processStatusIds">Array of objects (ProcessStatusId)</param>
             <returns></returns>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Reductions">
+            <summary>
+            Contains all functions used to communicate to BOL about reductions
+            </summary>
         </member>
         <member name="T:Twinvision.BolRetailerApi.Returns">
             <summary>
@@ -236,6 +281,11 @@
             <param name="handleReturnContainer">An object that holds the handling result and quantity of the returned product.</param>
             <returns></returns>
         </member>
+        <member name="T:Twinvision.BolRetailerApi.Shipments">
+            <summary>
+            Contains all functions used to communicate to BOL about shipments
+            </summary>
+        </member>
         <member name="M:Twinvision.BolRetailerApi.Shipments.GetShipmentList(System.Int32,System.String,Twinvision.BolRetailerApi.FulFilmentType)">
             <summary>
             A paginated list to retrieve all your shipments up to 3 months old. The shipments will be sorted by date in descending order.
@@ -252,6 +302,21 @@
             <param name="shipmentId">The id of the shipment.</param>
             <returns></returns>
         </member>
+        <member name="T:Twinvision.BolRetailerApi.ShippingLabels">
+            <summary>
+            Contains all functions used to communicate to BOL about shippinglabels
+            </summary>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.Transports">
+            <summary>
+            Contains all functions used to communicate to BOL about transports
+            </summary>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.AcceptHeaders">
+            <summary>
+            Class containing constant values for often used acceptheaders
+            </summary>
+        </member>
         <member name="T:Twinvision.BolRetailerApi.BolApiCaller">
             <summary>
             This class is the core of the bolapi project.
@@ -266,6 +331,121 @@
             <param name="clientId">The api clientId required for authorization, requestable from bol itself.</param>
             <param name="clientSecret">The api clientSecret required for authorization, requestable from bol itself.</param>
             <param name="useDemoEnvironment">If set to true all calls will be directed at bol's demo test environment, this should never be used unless you want to invoke calls without processing them.</param>
+        </member>
+        <member name="T:Twinvision.BolRetailerApi.BolApiHttpRequestHandler">
+            <summary>
+            Class used to standardize api request calls to boll.
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.BolApiUrl">
+            <summary>
+            The Bol api base url.
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.BolApiTestUrl">
+            <summary>
+            The bol api test base url.
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.BolApiCredentialsUrl">
+            <summary>
+            The url which is used to validate the given credentials.
+            </summary>
+        </member>
+        <member name="P:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.UseDemoEnvironment">
+            <summary>
+            If set to true all api calls will be done to a test environment of BOL
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.ClientId">
+            <summary>
+            The client Id used for authentication.
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.ClientSecret">
+            <summary>
+            The client Server used for authentication.
+            </summary>
+        </member>
+        <member name="F:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Authorization">
+            <summary>
+            Object containing authorization details making it possible to reauthorize automatically when authorization is expired.
+            </summary>
+        </member>
+        <member name="P:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.httpClient">
+            <summary>
+            HttpClient instance used by all HTTP requests.
+            </summary>
+        </member>
+        <member name="P:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.HttpClient">
+            <summary>
+            Property facilitating singular initialization for the private httpClient
+            </summary>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Initialize(System.String,System.String,System.Boolean)">
+            <summary>
+            Function which initializes the httpRequestHandler
+            </summary>
+            <param name="clientId">The client Id used for authentication.</param>
+            <param name="clientSecret">The client Secret used for authentication.</param>
+            <param name="useDemoEnvironment">If set to true all api calls will be done to a test environment of BOL</param>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.GetAuthorization(System.String,System.String)">
+            <summary>
+            Performs a post request to the BOL api trying to authorize with the supplied client id and secret
+            </summary>
+            <param name="clientId">The client Id used for authentication.</param>
+            <param name="clientSecret">The client Secret used for authentication.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Post(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Performs a post request filled with the given arguments.
+            </summary>
+            <param name="path">The end of the FullPath</param>
+            <param name="content">The content which gets send</param>
+            <param name="queryParameters">The parameters which get inserted as a query string</param>
+            <param name="acceptHeader">The acceptheader</param>
+            <returns>A promise of a HttpResponseMessage</returns>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Get(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Performs a get request filled with the given arguments.
+            </summary>
+            <param name="path">The end of the FullPath</param>
+            <param name="queryParameters">The parameters which get inserted as a query string</param>
+            <param name="acceptHeader">The acceptheader</param>
+            <returns>A promise of a HttpResponseMessage</returns>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Put(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Performs a put request filled with the given arguments.
+            </summary>
+            <param name="path">The end of the FullPath</param>
+            <param name="content">The content which gets send</param>
+            <param name="queryParameters">The parameters which get inserted as a query string</param>
+            <param name="acceptHeader">The acceptheader</param>
+            <returns>A promise of a HttpResponseMessage</returns>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Delete(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Performs a delete request filled with the given arguments.
+            </summary>
+            <param name="path">The end of the FullPath</param>
+            <param name="queryParameters">The parameters which get inserted as a query string</param>
+            <param name="acceptHeader">The acceptheader</param>
+            <returns>A promise of a HttpResponseMessage</returns>
+        </member>
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.ApiHttpRequest(System.String,System.Func{System.Uri,System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage}},System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Standardized function for performing HttpRequests.
+            Allows for injection of the final request making it possible to fire 'POST','GET','PUT' and 'DELETE' requests through this one function.
+            </summary>
+            <param name="path">The end of the FullPath</param>
+            <param name="httpRequest">A function requiring manual firing and returning of the prefered HttpRequest</param>
+            <param name="queryParameters">The parameters which get inserted as a query string</param>
+            <param name="acceptHeader">The acceptheader</param>
+            <returns></returns>
         </member>
         <member name="T:Twinvision.BolRetailerApi.HandlingResult">
             <summary>

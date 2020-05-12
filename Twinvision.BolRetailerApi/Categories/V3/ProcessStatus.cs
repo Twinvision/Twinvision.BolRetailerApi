@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 namespace Twinvision.BolRetailerApi
 {
     public enum ProcessEventType { CONFIRM_SHIPMENT, CANCEL_ORDER, CHANGE_TRANSPORT, HANDLE_RETURN_ITEM, CREATE_RETURN_ITEM, CREATE_INBOUND, DELETE_OFFER, CREATE_OFFER, UPDATE_OFFER, UPDATE_OFFER_STOCK, UPDATE_OFFER_PRICE, CREATE_OFFER_EXPORT, CREATE_PRODUCT_CONTENT };
+
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about process statuses
+    /// </summary>
     public class ProcessStatuses : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;

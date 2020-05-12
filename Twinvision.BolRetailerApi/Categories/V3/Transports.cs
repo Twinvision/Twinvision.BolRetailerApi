@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Twinvision.BolRetailerApi
 {
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about transports
+    /// </summary>
     public class Transports : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;

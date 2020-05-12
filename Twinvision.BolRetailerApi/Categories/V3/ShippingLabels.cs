@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Twinvision.BolRetailerApi
 {
+    /// <summary>
+    /// Contains all functions used to communicate to BOL about shippinglabels
+    /// </summary>
     public class ShippingLabels : BolApiHttpRequestHandler
     {
         private BolApiCaller BolApiCaller;
