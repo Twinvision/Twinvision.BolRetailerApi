@@ -31,13 +31,13 @@ namespace Twinvision.BolRetailerApi.Test
         [TestMethod]
         public async Task GetReductionsList()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetLatestReductionsFilename()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
     }
 }

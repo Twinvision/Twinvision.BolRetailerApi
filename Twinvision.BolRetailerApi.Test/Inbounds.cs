@@ -32,50 +32,50 @@ namespace Twinvision.BolRetailerApi.Test
         [TestMethod]
         public async Task GetInboundShipmentList()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
 
         [TestMethod]
         public async Task PushInboundShipment()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetDeliveryWindows()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetFBBTransporterList()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetFBBProductLabelsByEAN()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetInboundById()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetPackingListByInboundId()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
 
         [TestMethod]
         public async Task GetFBBShippinglabelByInboundId()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
     }
 }

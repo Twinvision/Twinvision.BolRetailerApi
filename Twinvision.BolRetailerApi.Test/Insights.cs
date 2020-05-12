@@ -32,7 +32,7 @@ namespace Twinvision.BolRetailerApi.Test
         [TestMethod]
         public async Task GetPerformanceIndicators()
         {
-            throw new NotImplementedException();
+            Assert.Inconclusive("Not implemented functionality");
         }
     }
 }

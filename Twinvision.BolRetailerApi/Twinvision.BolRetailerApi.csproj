@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Class definitions for the Bol Retailer Api Version 3</Description>
+    <Description>Class definitions for the Bol Retailer Api</Description>
     <Copyright>All Rights Reserved - Twinvision</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\mdon\source\repos\Twinvision.BolApiV3\Twinvision.BolRetailerApiV3\Twinvision.BolRetailerApiV3.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\mdon\OneDrive\Bureaublad\RetailApiNew\Twinvision.BolRetailerApi\Twinvision.BolRetailerApi\Twinvision.BolRetailerApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
