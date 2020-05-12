@@ -7,20 +7,20 @@ The library also handles recreation of timed out authentications so you don't ha
 
 Currently supported functionalities:
  - Commissions
-Invoicing
-Offers
-Orders
-ProcessStatus
-Returns
-Shipment
-ShipmentLabels
-Transport
+ - Invoicing
+ - Offers
+ - Orders
+ - ProcessStatus
+ - Returns
+ - Shipment
+ - ShipmentLabels
+ - Transport
 
 Currently not yet supported:
-Inbounds
-Insights
-Inventory
-Reductions
+ - Inbounds
+ - Insights
+ - Inventory
+ - Reductions
 
 Some examples: 
 
