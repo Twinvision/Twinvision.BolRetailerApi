@@ -38,7 +38,8 @@ steps:
     workingDirectory: 'Twinvision.BolRetailerApi.Test'
     script: 'dotnet user-secrets set ClientSecret dj_TlY88aV-4tu01HO91LxmOrrVKoiupw4bny31lAXKs1EXRCJy5QP9RDtwkyt_iU8Oz8zT2BE-w_J88gdPHnw'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: test
+    projects: '**/*Test/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
