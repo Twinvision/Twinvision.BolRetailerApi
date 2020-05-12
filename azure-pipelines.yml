@@ -28,6 +28,18 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CmdLine@2
+  inputs:
+    workingDirectory: 
+    script: 'dotnet user-secrets set ClientId c9704c32-933b-4827-a6e2-da2f81492077'
+
+- task: CmdLine@2
+  inputs:
+    workingDirectory: 
+    script: 'dotnet user-secrets set ClientSecret dj_TlY88aV-4tu01HO91LxmOrrVKoiupw4bny31lAXKs1EXRCJy5QP9RDtwkyt_iU8Oz8zT2BE-w_J88gdPHnw'
+
+
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
