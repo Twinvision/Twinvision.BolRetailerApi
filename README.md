@@ -5,7 +5,7 @@ This project aims at creating a library which forces you to fill in all required
 It then handles all the more detailed HttpClient configurations, and will deal with deserialisation.
 The library also handles recreation of timed out authentications so you don't have to bother.
 
-Currently supported:
+# Currently supported:
  - Commissions
  - Invoicing
  - Offers
@@ -16,13 +16,13 @@ Currently supported:
  - ShipmentLabels
  - Transport
 
-Currently not yet supported:
+# Currently not yet supported:
  - Inbounds
  - Insights
  - Inventory
  - Reductions
 
-Some examples: 
+# Examples:
 
 Get all open orders on page 1:
 ```cs
@@ -46,6 +46,8 @@ var bundlePrices = new List<BundlePrice>()
 var pricing = new Pricing(bundlePrices);
 var result = await bolApiCaller.Offers.UpdateOfferPrice(someOffer.OfferId.ToString(), pricing);
 ```
+
+# Tests
 
 For more examples look at the Test project, which contains an implementation for every supported function.
 
