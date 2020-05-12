@@ -5,7 +5,7 @@ This project aims at creating a library which forces you to fill in all required
 It then handles all the more detailed HttpClient configurations, and will deal with deserialisation.
 The library also handles recreation of timed out authentications so you don't have to bother.
 
-# Currently supported:
+# Supported:
  - Commissions
  - Invoicing
  - Offers
@@ -16,7 +16,7 @@ The library also handles recreation of timed out authentications so you don't ha
  - ShipmentLabels
  - Transport
 
-# Currently not yet supported:
+# Not yet supported:
  - Inbounds
  - Insights
  - Inventory
