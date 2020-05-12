@@ -169,7 +169,7 @@ namespace Twinvision.BolRetailerApi
             {
                 foreach (var kvp in queryParameters)
                 {
-                    if (!builder.Query.EndsWith("?"))
+                    if (!builder.Query.Contains("?"))
                     {
                         builder.Query = "?" + kvp.Key + "=" + kvp.Value;
                     }
