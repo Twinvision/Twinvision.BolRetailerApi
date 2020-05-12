@@ -1,11 +1,11 @@
 # BolRetailerApi
 A C# class library of all the endpoints for the [BOL API](https://api.bol.com/retailer/public)
 
-This project aims at creating a library which forces you to fill in all required information.
-Meaning we require objects to be passed through functions, which can only be created using constructors with the minimally required information.
+This project aims at creating a library which forces you to fill in all required information to perform each request.
+It then handles all the more detailed HttpClient configurations, and will deal with deserialisation.
 The library also handles recreation of timed out authentications so you don't have to bother.
 
-Currently supported functionalities:
+Currently supported:
  - Commissions
  - Invoicing
  - Offers
