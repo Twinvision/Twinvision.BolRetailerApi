@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Twinvision.BolRetailerApi
+{
+    public class Transports : BolApiHttpRequestHandler
+    {
+        private BolApiCaller BolApiCaller;
+        public Transports(BolApiCaller bolApiCaller)
+        {
+            BolApiCaller = bolApiCaller;
+        }
+
+        public async Task<StatusResponse> AddTransportInformation(string transportId, Transport transport)
+        {
+            using (var content = BolApiHelper.BuildContentFromObject(transport))
+            {
+                var response = await Put($"/transports/{transportId}", content);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+            }
+        }
+
+
+        public async Task<string[]> GetShippingLabelByTransportId(string transportId)
+        {
+            var response = await Get($"/transports/{transportId}/shipping-label", acceptHeader: AcceptHeaders.V3Pdf);
+            return await BolApiHelper.GetContentFromResponse<string[]>(response);
+        }
+    }
+}
