@@ -3,10 +3,32 @@ A C# class library of all the endpoints for the [BOL API](https://api.bol.com/re
 
 This project aims at creating a library which forces you to fill in all required information.
 Meaning we require objects to be passed through functions, which can only be created using constructors with the minimally required information.
+The library also handles recreation of timed out authentications so you don't have to bother.
 
+Currently supported functionalities:
+ - Commissions
+Invoicing
+Offers
+Orders
+ProcessStatus
+Returns
+Shipment
+ShipmentLabels
+Transport
 
+Currently not yet supported:
+Inbounds
+Insights
+Inventory
+Reductions
 
 Some examples: 
+
+Get all open orders on page 1:
+```cs
+var bolApiCaller = new BolApiCaller(testClientId, testClientSecret);
+var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+```
 
 Fetching all offers as a csv string from BOL:
 ```cs
@@ -25,10 +47,8 @@ var pricing = new Pricing(bundlePrices);
 var result = await bolApiCaller.Offers.UpdateOfferPrice(someOffer.OfferId.ToString(), pricing);
 ```
 
-Get all open orders on page 1:
-```cs
-var bolApiCaller = new BolApiCaller(testClientId, testClientSecret);
-var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
-```
-
 For more examples look at the Test project, which contains an implementation for every supported function.
+
+P.S.
+If you want to run all the unit tests yourself you will have to use your own ClientId and ClientSecret.
+For more information about this check the "CheckCredentialsSet" TestMethod in the "ASetup" TestClass
