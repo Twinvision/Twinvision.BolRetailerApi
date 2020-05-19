@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Twinvision.BolRetailerApi.Containers
 {
-    class InboundShipmentContainer
+    public class InboundShipmentContainer
     {
         public string Reference { get; set; }
         public Timeslot TimeSlot { get; set; }

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.Containers;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi.Test
 {
@@ -12,6 +14,8 @@ namespace Twinvision.BolRetailerApi.Test
     {
         public string testClientId = null;
         public string testClientSecret = null;
+
+        private BolApiCaller bolApiCaller { get; set; }
 
         IConfiguration Configuration { get; set; }
         [TestInitialize]
@@ -26,56 +30,92 @@ namespace Twinvision.BolRetailerApi.Test
 
             testClientId = Configuration["ClientId"];
             testClientSecret = Configuration["ClientSecret"];
+
+            bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
         }
 
 
         [TestMethod]
         public async Task GetInboundShipmentList()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var shipment = await bolApiCaller.Inbounds.GetInboundShipmentList();
         }
 
 
         [TestMethod]
-        public async Task PushInboundShipment()
+        public async Task PostInboundShipment()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var inboundsShipment = new InboundShipmentContainer()
+            {
+                Reference = "ZENDINGLVB1GVR",
+                TimeSlot = new Timeslot()
+                {
+                    Start = DateTime.Parse("2018-04-05T12:00:00+02:00"),
+                    End = DateTime.Parse("2018-04-05T17:00:00+02:00")
+                },
+                FbbTransporter = new FbbTransporter()
+                {
+                    Code = "UPS",
+                    Name = "UPS"
+                },
+                LabellingService = false,
+                Products = new Product[]
+                {
+                    new Product()
+                    {
+                        Ean = "8718526069334",
+                        AnnouncedQuantity = 5
+                    }
+                }
+            };
+            var statusReponse = await bolApiCaller.Inbounds.PostInboundShipment(inboundsShipment);
         }
 
         [TestMethod]
         public async Task GetDeliveryWindows()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var statusResponse = await bolApiCaller.Inbounds.GetDeliveryWindowsForNewInboundShipments(DateTime.Parse("2018-05-31"));
+            Assert.IsTrue(statusResponse.TimeSlots.Length > 0);
         }
 
         [TestMethod]
         public async Task GetFBBTransporterList()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var transporterList = await bolApiCaller.Inbounds.GetFBBTransportersList();
+            Assert.IsTrue(transporterList.FbbTransporters.Length > 0);
         }
 
         [TestMethod]
         public async Task GetFBBProductLabelsByEAN()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var productLabelContainer = new ProductLabelsContainer(
+                new ProductLabel[]
+                {
+                    new ProductLabel("0038781100893", 1),
+                    new ProductLabel("5030917058226", 2)
+                });
+            var productLabel = await bolApiCaller.Inbounds.GetFBBProductLabelsByEAN(productLabelContainer);
+            Assert.IsTrue(productLabel.StartsWith("THIS IS A FAKE PDF FILE"));
         }
 
         [TestMethod]
         public async Task GetInboundById()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var inbound = await bolApiCaller.Inbounds.GetInboundById(5850051250);
+            Assert.IsTrue(inbound.Products.Length > 0);
         }
 
         [TestMethod]
         public async Task GetPackingListByInboundId()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var inbound = await bolApiCaller.Inbounds.GetPackingListByInboundId(5850051250);
+
         }
 
         [TestMethod]
         public async Task GetFBBShippinglabelByInboundId()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var shippingLabel = await bolApiCaller.Inbounds.GetFBBShippingLabelByInboundId(5850051250);
         }
     }
 }

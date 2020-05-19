@@ -12,7 +12,7 @@ namespace Twinvision.BolRetailerApi.Test
     {
         public string testClientId = null;
         public string testClientSecret = null;
-
+        private BolApiCaller bolApiCaller;
         IConfiguration Configuration { get; set; }
         [TestInitialize]
         public async Task Initialize()
@@ -26,28 +26,27 @@ namespace Twinvision.BolRetailerApi.Test
 
             testClientId = Configuration["ClientId"];
             testClientSecret = Configuration["ClientSecret"];
+
+            bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
         }
 
         [TestMethod]
         public async Task GetAllInvoices()
         {
-            var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var invoices = await bolApiCaller.Invoices.GetAllInvoices();
         }
 
         [TestMethod]
         public async Task GetInvoiceById()
         {
-            var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var invoices = await bolApiCaller.Invoices.GetInvoiceById("4500022543921");
         }
 
         [TestMethod]
         public async Task GetInvoiceSpecificationById()
         {
-            Assert.Inconclusive("BOL seems to have changed its test data making this function fail");
-            //var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            //var response = await bolApiCaller.Invoices.GetInvoiceSpecificationById("4500022543921");
+            var response = await bolApiCaller.Invoices.GetInvoiceSpecificationById("4500022543921");
+            Assert.AreEqual(response, Resources.ResourceSpecificationValue);
         }
     }
 }

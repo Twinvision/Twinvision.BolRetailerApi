@@ -68,10 +68,12 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<string> GetInvoiceSpecificationById(string invoiceId, int page = 1)
         {
-            var queryParameters = new Dictionary<string, string>()
+            var queryParameters = new Dictionary<string, string>();
+            //This query is only added when it is not the default only to make the tests work with the BOL Demo (if you pass the page query parameter in the demo environment it crashes..)
+            if(page != 1)
             {
-                { "page", page.ToString() }
-            };
+                queryParameters.Add("page", page.ToString());
+            }
             var response = await Get($"/invoices/" + invoiceId + "/specification", queryParameters);
             return await response.Content.ReadAsStringAsync();
         }

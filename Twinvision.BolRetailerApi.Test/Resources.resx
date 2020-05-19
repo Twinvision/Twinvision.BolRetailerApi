@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ResourceSpecificationValue" xml:space="preserve">
+    <value>{"invoiceSpecification":[{"id":"7616222250#1021103894#TURNOVER","invoiceLineRef":"4500022543921#TURNOVER","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":3.00},"lineExtensionAmount":{"currencyID":"EUR","value":104.94},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.00}},"item":{"Description":[{"value":"Verkoopprijs artikel(en), ontvangen van kopers en door bol.com door te storten"}],"Name":{"value":"TURNOVER"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"B"},"Percent":{"value":0.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222250"}},{"Name":{"value":"EAN"},"Value":{"value":"8712626055150"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":104.94},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":3.00}}},{"id":"7616222250#1021092231#COMMISSION","invoiceLineRef":"4500022543921#COMMISSION","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":3.00},"lineExtensionAmount":{"currencyID":"EUR","value":15.495868},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":3.254132}},"item":{"Description":[{"value":"Bemiddelingsbijdrage"}],"Name":{"value":"COMMISSION"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222250"}},{"Name":{"value":"EAN"},"Value":{"value":"8712626055150"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":15.495868},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":3.00}}},{"id":"7616222250#1021103894#TURNOVER","invoiceLineRef":"4500022543921#TURNOVER","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":-24.50},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.00}},"item":{"Description":[{"value":"Verkoopprijs artikel(en), ontvangen van kopers en door bol.com door te storten"}],"Name":{"value":"TURNOVER"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"B"},"Percent":{"value":0.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222700"}},{"Name":{"value":"EAN"},"Value":{"value":"8712626055143"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":24.50},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616222700#1021092231#COMMISSION","invoiceLineRef":"4500022543921#COMMISSION","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":3.867769},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.812231}},"item":{"Description":[{"value":"Bemiddelingsbijdrage"}],"Name":{"value":"COMMISSION"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222700"}},{"Name":{"value":"EAN"},"Value":{"value":"8712626055143"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":3.867769},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616222700#1021103894#TURNOVER","invoiceLineRef":"4500022543921#TURNOVER","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":-699.95},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.00}},"item":{"Description":[{"value":"Verkoopprijs artikel(en), ontvangen van kopers en door bol.com door te storten"}],"Name":{"value":"TURNOVER"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"B"},"Percent":{"value":0.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222700"}},{"Name":{"value":"EAN"},"Value":{"value":"8804269223123"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":699.95},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616222700#1021092231#COMMISSION","invoiceLineRef":"4500022543921#COMMISSION","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":93.380165},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":19.609835}},"item":{"Description":[{"value":"Bemiddelingsbijdrage"}],"Name":{"value":"COMMISSION"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616222700"}},{"Name":{"value":"EAN"},"Value":{"value":"8804269223123"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":93.380165},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"4616526971#1021103894#TURNOVER","invoiceLineRef":"4500022543921#TURNOVER","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":-699.95},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.00}},"item":{"Description":[{"value":"Verkoopprijs artikel(en), ontvangen van kopers en door bol.com door te storten"}],"Name":{"value":"TURNOVER"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"B"},"Percent":{"value":0.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"4616526971"}},{"Name":{"value":"EAN"},"Value":{"value":"8804269223123"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":699.95},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"4616526971#1021103894#COMMISSION","invoiceLineRef":"4500022543921#COMMISSION","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":93.380165},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":19.609835}},"item":{"Description":[{"value":"Bemiddelingsbijdrage"}],"Name":{"value":"COMMISSION"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"4616526971"}},{"Name":{"value":"EAN"},"Value":{"value":"8804269223123"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":93.380165},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616247328#1159250#OUTBOUND","invoiceLineRef":"3900518549020#OUTBOUND","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":2.50},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.525}},"item":{"Description":[{"value":"Verzendkosten"}],"Name":{"value":"OUTBOUND"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616247328"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":2.50},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616247328#1211182556#PICK_PACK","invoiceLineRef":"3900518549020#PICK_PACK","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":1.50},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.315}},"item":{"Description":[{"value":"Pick&amp;amp;pack kosten"}],"Name":{"value":"PICK_PACK"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616247328"}},{"Name":{"value":"EAN"},"Value":{"value":"8718526069334"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":1.50},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616247328#1211182556#STOCK","invoiceLineRef":"3900518549020#STOCK","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":4.00},"lineExtensionAmount":{"currencyID":"EUR","value":0.00658},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.001382}},"item":{"Description":[{"value":"Voorraadkosten"}],"Name":{"value":"STOCK"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616247328"}},{"Name":{"value":"EAN"},"Value":{"value":"8718526069334"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":0.00658},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":4.00}}},{"id":"7616247328#1211182556#COMMISSION","invoiceLineRef":"3900518549020#COMMISSION","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":3.917355},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.822645}},"item":{"Description":[{"value":"Bemiddelingsbijdrage"}],"Name":{"value":"COMMISSION"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"S"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616247328"}},{"Name":{"value":"EAN"},"Value":{"value":"8718526069334"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":3.917355},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"7616247328#1211182556#TURNOVER","invoiceLineRef":"3900518549020#TURNOVER","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":-25.00},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.00}},"item":{"Description":[{"value":"Verkoopprijs artikel(en), ontvangen van kopers en door bol.com door te storten"}],"Name":{"value":"TURNOVER"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"B"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"7616247328"}},{"Name":{"value":"EAN"},"Value":{"value":""}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":25.00},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}},{"id":"318009223#SHIPMENT_LABEL","invoiceLineRef":"3900518514886#SHIPMENT_LABEL","invoicedQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00},"lineExtensionAmount":{"currencyID":"EUR","value":3.99},"taxTotal":{"TaxAmount":{"currencyID":"EUR","value":0.827900}},"item":{"Description":[{"value":"Bijdrage aan pakketzegel(s)"}],"Name":{"value":"SHIPMENT_LABEL"},"ClassifiedTaxCategory":[{"ID":{"schemeAgencyID":"6","schemeID":"UNCL5305","value":"K"},"Percent":{"value":21.00},"TaxScheme":{"ID":{"schemeAgencyID":"6","schemeID":"UN/ECE 5153","value":"VAT"}}}],"AdditionalItemProperty":[{"Name":{"value":"OrderId"},"Value":{"value":"4616526971"}},{"Name":{"value":"EAN"},"Value":{"value":"8804269223123"}}]},"price":{"PriceAmount":{"currencyID":"EUR","value":3.99},"BaseQuantity":{"unitCode":"ZZ","unitCodeListID":"UNECERec20","value":1.00}}}]}</value>
+  </data>
+</root>

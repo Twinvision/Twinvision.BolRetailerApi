@@ -39,11 +39,7 @@ namespace Twinvision.BolRetailerApi.Test
         [TestMethod]
         public async Task GetPurchasableShippingLabel()
         {
-            Assert.Inconclusive("Demo data not implemented by Bol");
-
-
-            //var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            //var response = await bolApiCaller.Transports.GetShippingLabelByTransportId("356988863");
+            Assert.Inconclusive("BOL does not support this request in its demo environment.");
         }
     }
 }

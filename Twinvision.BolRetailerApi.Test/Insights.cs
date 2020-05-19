@@ -12,8 +12,9 @@ namespace Twinvision.BolRetailerApi.Test
     {
         public string testClientId = null;
         public string testClientSecret = null;
-
+        private BolApiCaller bolApiCaller { get; set; }
         IConfiguration Configuration { get; set; }
+
         [TestInitialize]
         public async Task Initialize()
         {
@@ -26,13 +27,24 @@ namespace Twinvision.BolRetailerApi.Test
 
             testClientId = Configuration["ClientId"];
             testClientSecret = Configuration["ClientSecret"];
-        }
 
+            bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
+        }
 
         [TestMethod]
         public async Task GetPerformanceIndicators()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            //CANCELLATIONS,FULFILMENT,PHONE_AVAILABILITY,CASE_ITEM_RATIO,TRACK_AND_TRACE,RETURNS,REVIEWS
+            var indicator = await bolApiCaller.Insights.GetPerformanceIndicators(new PerformanceName[] 
+            { 
+                PerformanceName.CANCELLATIONS, 
+                PerformanceName.FULFILMENT, 
+                PerformanceName.PHONE_AVAILABILITY,
+                PerformanceName.CASE_ITEM_RATIO,
+                PerformanceName.TRACK_AND_TRACE,
+                PerformanceName.RETURNS,
+                PerformanceName.REVIEWS
+            }, 2019, 10);
         }
     }
 }

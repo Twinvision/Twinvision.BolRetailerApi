@@ -12,6 +12,7 @@ namespace Twinvision.BolRetailerApi.Test
     {
         public string testClientId = null;
         public string testClientSecret = null;
+        private BolApiCaller bolApiCaller { get; set; }
 
         IConfiguration Configuration { get; set; }
         [TestInitialize]
@@ -26,13 +27,15 @@ namespace Twinvision.BolRetailerApi.Test
 
             testClientId = Configuration["ClientId"];
             testClientSecret = Configuration["ClientSecret"];
+
+            bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
         }
 
 
         [TestMethod]
         public async Task GetLVBOrFBBInventory()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var inventory = await bolApiCaller.Inventory.GetLVBOrFBBInventory();
         }
     }
 }

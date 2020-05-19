@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.Containers;
 
 namespace Twinvision.BolRetailerApi
 {
@@ -13,6 +16,23 @@ namespace Twinvision.BolRetailerApi
         public Reductions(BolApiCaller bolApiCaller)
         {
             BolApiCaller = bolApiCaller;
+        }
+
+        public async Task<ReductionCSVContainer> GetReductionsCSV()
+        {
+            var response = await Get("/reductions", acceptHeader: AcceptHeaders.V3Csv);
+            var reductionCsvContainer = new ReductionCSVContainer()
+            {
+                LatestReductionFileName = response.Content.Headers.ContentDisposition.FileName,
+                ReductionsCsv = await response.Content.ReadAsStringAsync()
+            };
+            return reductionCsvContainer;
+        }
+
+        public async Task<string> GetLatestReductionFileName()
+        {
+            var response = await Get("/reductions/latest", acceptHeader: AcceptHeaders.V3Csv);
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Twinvision.BolRetailerApi.Test
     {
         public string testClientId = null;
         public string testClientSecret = null;
-
+        private BolApiCaller bolApiCaller;
         IConfiguration Configuration { get; set; }
         [TestInitialize]
         public async Task Initialize()
@@ -26,18 +26,29 @@ namespace Twinvision.BolRetailerApi.Test
 
             testClientId = Configuration["ClientId"];
             testClientSecret = Configuration["ClientSecret"];
+
+            bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
         }
 
         [TestMethod]
         public async Task GetReductionsList()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var reductions = await bolApiCaller.Reductions.GetReductionsCSV();
+
         }
 
         [TestMethod]
         public async Task GetLatestReductionsFilename()
         {
-            Assert.Inconclusive("Not implemented functionality");
+            var reductionFileName = await bolApiCaller.Reductions.GetLatestReductionFileName();
+        }
+
+        [TestMethod]
+        public async Task IsReductionFileNameTheSame()
+        {
+            var reductions = await bolApiCaller.Reductions.GetReductionsCSV();
+            var reductionFileName = await bolApiCaller.Reductions.GetLatestReductionFileName();
+            Assert.AreEqual(reductions.LatestReductionFileName, reductionFileName);
         }
     }
 }
