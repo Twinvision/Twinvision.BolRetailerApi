@@ -1,5 +1,5 @@
 # BolRetailerApi
-A C# class library of all the endpoints for the [BOL RETAILER API](https://api.bol.com/retailer/public)
+A C# .NET Standard class library of all the endpoints for the [BOL RETAILER API](https://api.bol.com/retailer/public)
 
 This project aims at creating a library which forces you to fill in all required information to perform each request.
 It then handles all the more detailed HttpClient configurations, and will deal with deserialisation.
