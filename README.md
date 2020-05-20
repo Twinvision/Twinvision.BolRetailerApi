@@ -15,8 +15,6 @@ The library also handles recreation of timed out authentications so you don't ha
  - Shipment
  - ShipmentLabels
  - Transport
-
-# Not yet supported:
  - Inbounds
  - Insights
  - Inventory
