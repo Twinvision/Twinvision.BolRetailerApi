@@ -79,6 +79,8 @@ namespace Twinvision.BolRetailerApi.Test
                     {
                         var shippingInfo = new ShippingInfo();
                         await bolApiCaller.Orders.ShipOrderItem(orderItem.OrderItemId, shippingInfo);
+                        //The BOL api limits the amount of calls on this endpoint
+                        await Task.Delay(100);
                     }
                 }
             }
