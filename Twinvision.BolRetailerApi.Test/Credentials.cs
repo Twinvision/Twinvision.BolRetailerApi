@@ -8,8 +8,5 @@ namespace Twinvision.BolRetailerApi.Test
     public class Credentials
     {
 
-        public static void SetCredentials<T>(IConfiguration configuration) where T : class
-        {
-        }
     }
 }
