@@ -42,7 +42,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public static async Task<T> GetContentFromResponse<T>(HttpResponseMessage response)
         {
-            var responseContentString = await response.Content.ReadAsStringAsync();
+            var responseContentString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var settings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
