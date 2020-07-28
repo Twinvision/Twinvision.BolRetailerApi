@@ -30,7 +30,7 @@ namespace Twinvision.BolRetailerApi
             using (var content = BolApiHelper.BuildContentFromObject(queries))
             {
                 var response = await Post("/commission", content);
-                return await BolApiHelper.GetContentFromResponse<CommissionsContainer>(response);
+                return await BolApiHelper.GetContentFromResponse<CommissionsContainer>(response).ConfigureAwait(false);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Twinvision.BolRetailerApi
                     parameters.Add(nameof(price), ((decimal)price).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
                 }
                 var response = await Get($"/commission/{ean}", parameters);
-                return await BolApiHelper.GetContentFromResponse<Commission>(response);
+                return await BolApiHelper.GetContentFromResponse<Commission>(response).ConfigureAwait(false);
             }
         }
     }

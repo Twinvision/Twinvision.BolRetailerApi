@@ -32,8 +32,8 @@ namespace Twinvision.BolRetailerApi
                 { "handled", handled.ToString() },
                 { "fulfilment-method", fulfilmentMethod.ToString() },
             };
-            var response = await Get($"/returns", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<ReturnsResponse>(response);
+            var response = await Get($"/returns", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<ReturnsResponse>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<RMAReturn> GetReturnByRMAId(int rmaId)
         {
-            var response = await Get($"/returns/" + rmaId.ToString());
-            return await BolApiHelper.GetContentFromResponse<RMAReturn>(response);
+            var response = await Get($"/returns/" + rmaId.ToString()).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<RMAReturn>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(handleReturnContainer))
             {
-                var response = await Put($"/returns/" + rmaId.ToString(), content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/returns/" + rmaId.ToString(), content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
     }

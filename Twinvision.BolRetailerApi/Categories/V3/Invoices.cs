@@ -41,8 +41,8 @@ namespace Twinvision.BolRetailerApi
             {
                 queryParameters = null;
             }
-            var response = await Get($"/invoices", queryParameters);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get($"/invoices", queryParameters).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<string> GetInvoiceById(string invoiceId)
         {
-            var response = await Get($"/invoices/" + invoiceId);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get($"/invoices/" + invoiceId).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -74,8 +74,8 @@ namespace Twinvision.BolRetailerApi
             {
                 queryParameters.Add("page", page.ToString());
             }
-            var response = await Get($"/invoices/" + invoiceId + "/specification", queryParameters);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get($"/invoices/" + invoiceId + "/specification", queryParameters).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }
 }

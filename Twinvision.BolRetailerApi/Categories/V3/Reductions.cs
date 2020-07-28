@@ -20,19 +20,19 @@ namespace Twinvision.BolRetailerApi
 
         public async Task<ReductionCSVContainer> GetReductionsCSV()
         {
-            var response = await Get("/reductions", acceptHeader: AcceptHeaders.V3Csv);
+            var response = await Get("/reductions", acceptHeader: AcceptHeaders.V3Csv).ConfigureAwait(false);
             var reductionCsvContainer = new ReductionCSVContainer()
             {
                 LatestReductionFileName = response.Content.Headers.ContentDisposition.FileName,
-                ReductionsCsv = await response.Content.ReadAsStringAsync()
+                ReductionsCsv = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
             };
             return reductionCsvContainer;
         }
 
         public async Task<string> GetLatestReductionFileName()
         {
-            var response = await Get("/reductions/latest", acceptHeader: AcceptHeaders.V3Csv);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get("/reductions/latest", acceptHeader: AcceptHeaders.V3Csv).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }
 }

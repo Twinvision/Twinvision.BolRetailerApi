@@ -20,16 +20,16 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(transport))
             {
-                var response = await Put($"/transports/{transportId}", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/transports/{transportId}", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
 
         public async Task<string[]> GetShippingLabelByTransportId(string transportId)
         {
-            var response = await Get($"/transports/{transportId}/shipping-label", acceptHeader: AcceptHeaders.V3Pdf);
-            return await BolApiHelper.GetContentFromResponse<string[]>(response);
+            var response = await Get($"/transports/{transportId}/shipping-label", acceptHeader: AcceptHeaders.V3Pdf).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<string[]>(response).ConfigureAwait(false);
         }
     }
 }

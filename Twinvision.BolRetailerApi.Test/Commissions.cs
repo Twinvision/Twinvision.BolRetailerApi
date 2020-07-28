@@ -29,7 +29,7 @@ namespace Twinvision.BolRetailerApi.Test
         }
 
         [TestMethod]
-        public async Task GetCommissionByEAN()
+        public async Task GetCommissionByEANAsync()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var commission = await bolApiCaller.Commissions.GetCommissionByEAN("8712626055143", "GOOD", 24.50m);

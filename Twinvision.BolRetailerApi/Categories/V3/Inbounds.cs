@@ -45,16 +45,16 @@ namespace Twinvision.BolRetailerApi
             {
                 queryParameters.Add("creation-end", ((DateTime)creationEnd).ToString("yyyy-MM-dd"));
             }
-            var response = await Get("/inbounds", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<InboundsContainer>(response);
+            var response = await Get("/inbounds", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<InboundsContainer>(response).ConfigureAwait(false);
         }
 
         public async Task<StatusResponse> PostInboundShipment(InboundShipmentContainer inboundShipment)
         {
             using (var content = BolApiHelper.BuildContentFromObject(inboundShipment))
             {
-                var response = await Post("/inbounds", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Post("/inbounds", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -68,41 +68,41 @@ namespace Twinvision.BolRetailerApi
             {
                 queryParameters.Add("delivery-date", ((DateTime)deliveryDate).ToString("yyyy-MM-dd"));
             }
-            var response = await Get("/inbounds/delivery-windows", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<DeliveryWindowsResponse>(response);
+            var response = await Get("/inbounds/delivery-windows", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<DeliveryWindowsResponse>(response).ConfigureAwait(false);
         }
 
         public async Task<FBBTransporterListContainer> GetFBBTransportersList()
         {
-            var response = await Get("/inbounds/fbb-transporters");
-            return await BolApiHelper.GetContentFromResponse<FBBTransporterListContainer>(response);
+            var response = await Get("/inbounds/fbb-transporters").ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<FBBTransporterListContainer>(response).ConfigureAwait(false);
         }
 
         public async Task<string> GetFBBProductLabelsByEAN(ProductLabelsContainer productLabelsContainer)
         {
             using (var content = BolApiHelper.BuildContentFromObject(productLabelsContainer))
             {
-                var response = await Post("/inbounds/productlabels", content, acceptHeader: AcceptHeaders.V3Pdf);
-                return await response.Content.ReadAsStringAsync();
+                var response = await Post("/inbounds/productlabels", content, acceptHeader: AcceptHeaders.V3Pdf).ConfigureAwait(false);
+                return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
         }
 
         public async Task<Inbound> GetInboundById(long inboundId)
         {
-            var response = await Get("/inbounds/" + inboundId.ToString());
-            return await BolApiHelper.GetContentFromResponse<Inbound>(response);
+            var response = await Get("/inbounds/" + inboundId.ToString()).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<Inbound>(response).ConfigureAwait(false);
         }
 
         public async Task<string> GetPackingListByInboundId(long inboundId)
         {
-            var response = await Get("/inbounds/" + inboundId.ToString() + "/packinglist", acceptHeader: AcceptHeaders.V3Pdf);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get("/inbounds/" + inboundId.ToString() + "/packinglist", acceptHeader: AcceptHeaders.V3Pdf).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         public async Task<string> GetFBBShippingLabelByInboundId(long inboundId)
         {
-            var response = await Get("/inbounds/" + inboundId.ToString() + "/shippinglabel", acceptHeader: AcceptHeaders.V3Pdf);
-            return await response.Content.ReadAsStringAsync();
+            var response = await Get("/inbounds/" + inboundId.ToString() + "/shippinglabel", acceptHeader: AcceptHeaders.V3Pdf).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }
 }

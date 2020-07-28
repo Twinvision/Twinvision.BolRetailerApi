@@ -76,11 +76,11 @@ namespace Twinvision.BolRetailerApi
         /// <param name="clientId">The client Id used for authentication.</param>
         /// <param name="clientSecret">The client Secret used for authentication.</param>
         /// <param name="useDemoEnvironment">If set to true all api calls will be done to a test environment of BOL</param>
-        public static void Initialize(string clientId, string clientSecret, bool useDemoEnvironment = false)
+        public static async Task Initialize(string clientId, string clientSecret, bool useDemoEnvironment = false)
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
-            Authorization = GetAuthorization(ClientId, ClientSecret);
+            Authorization = await GetAuthorization(ClientId, ClientSecret).ConfigureAwait(false);
             UseDemoEnvironment = useDemoEnvironment;
         }
 
@@ -90,15 +90,15 @@ namespace Twinvision.BolRetailerApi
         /// <param name="clientId">The client Id used for authentication.</param>
         /// <param name="clientSecret">The client Secret used for authentication.</param>
         /// <returns></returns>
-        private static Authorization GetAuthorization(string clientId, string clientSecret)
+        private static async Task<Authorization> GetAuthorization(string clientId, string clientSecret)
         {
             var authorizationString = clientId + ":" + clientSecret;
-            HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(authorizationString)));
+            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes(authorizationString)));
             HttpClient.DefaultRequestHeaders.Accept.Clear();
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(AcceptHeaders.V3Json));
             var htmlContent = new StringContent("", Encoding.UTF8, "application/json");
-            var response = HttpClient.PostAsync(new Uri(BolApiCredentialsUrl), htmlContent).Result;
-            var responseContent = response.Content.ReadAsStringAsync().Result;
+            var response = await HttpClient.PostAsync(new Uri(BolApiCredentialsUrl), htmlContent).ConfigureAwait(false);
+            var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonConvert.DeserializeObject<Authorization>(responseContent);
         }
 
@@ -112,7 +112,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns>A promise of a HttpResponseMessage</returns>
         protected async Task<HttpResponseMessage> Post(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
         {
-            return await ApiHttpRequest(path, (uri) => { return HttpClient.PostAsync(uri, content); }, queryParameters, acceptHeader);
+            return await ApiHttpRequest(path, (uri) => { return HttpClient.PostAsync(uri, content); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns>A promise of a HttpResponseMessage</returns>
         protected async Task<HttpResponseMessage> Get(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
         {
-            return await ApiHttpRequest(path, (uri) => { return HttpClient.GetAsync(uri); }, queryParameters, acceptHeader);
+            return await ApiHttpRequest(path, (uri) => { return HttpClient.GetAsync(uri); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns>A promise of a HttpResponseMessage</returns>
         protected async Task<HttpResponseMessage> Put(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
         {
-            return await ApiHttpRequest(path, (uri) => { return HttpClient.PutAsync(uri, content); }, queryParameters, acceptHeader);
+            return await ApiHttpRequest(path, (uri) => { return HttpClient.PutAsync(uri, content); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns>A promise of a HttpResponseMessage</returns>
         protected async Task<HttpResponseMessage> Delete(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
         {
-            return await ApiHttpRequest(path, (uri) => { return HttpClient.DeleteAsync(uri); }, queryParameters, acceptHeader);
+            return await ApiHttpRequest(path, (uri) => { return HttpClient.DeleteAsync(uri); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -182,16 +182,16 @@ namespace Twinvision.BolRetailerApi
             HttpClient.DefaultRequestHeaders.Accept.Clear();
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
             HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Authorization.Access_token);
-            var response = await httpRequest(builder.Uri);
+            var response = await httpRequest(builder.Uri).ConfigureAwait(false);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                Authorization = GetAuthorization(ClientId, ClientSecret);
+                Authorization = await GetAuthorization(ClientId, ClientSecret).ConfigureAwait(false);
                 HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Authorization.Access_token);
-                response = await httpRequest(builder.Uri);
+                response = await httpRequest(builder.Uri).ConfigureAwait(false);
             }
             if (!response.IsSuccessStatusCode)
             {
-                var responseContentString = await response.Content.ReadAsStringAsync();
+                var responseContentString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 ApiCallException apiCallException = null;
                 try
                 {

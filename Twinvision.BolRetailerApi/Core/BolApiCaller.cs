@@ -45,7 +45,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="useDemoEnvironment">If set to true all calls will be directed at bol's demo test environment, this should never be used unless you want to invoke calls without processing them.</param>
         public BolApiCaller(string clientId, string clientSecret, bool useDemoEnvironment = false)
         {
-            BolApiHttpRequestHandler.Initialize(clientId, clientSecret, useDemoEnvironment);
+            Task.Run(() => BolApiHttpRequestHandler.Initialize(clientId, clientSecret, useDemoEnvironment)).Wait();
 
             Commissions = new Commisions(this);
             Inbounds = new Inbounds(this);

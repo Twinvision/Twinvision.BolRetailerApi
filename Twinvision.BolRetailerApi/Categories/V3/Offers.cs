@@ -27,8 +27,8 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(offer))
             {
-                var response = await Post("/offers", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Post("/offers", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -45,8 +45,8 @@ namespace Twinvision.BolRetailerApi
             }
             using (var content = BolApiHelper.BuildContentFromObject(exportConfiguration))
             {
-                var response = await Post("/offers/export", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Post("/offers/export", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -57,8 +57,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<string> RetrieveOfferExportFile(string offerExportId)
         {
-            var response = await Get("/offers/export/" + offerExportId, acceptHeader: AcceptHeaders.V3Csv);
-            return response.Content.ReadAsStringAsync().Result;
+            var response = await Get("/offers/export/" + offerExportId, acceptHeader: AcceptHeaders.V3Csv).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -88,27 +88,27 @@ namespace Twinvision.BolRetailerApi
             {
                 exportConfiguration = new OfferExportConfiguration();
             }
-            var offerExportRequest = await RequestOfferExportFile(exportConfiguration);
+            var offerExportRequest = await RequestOfferExportFile(exportConfiguration).ConfigureAwait(false);
             ProcessStatus exportStatus = null;
             var firstRequest = true;
             while (exportStatus == null || exportStatus.Status != "SUCCESS")
             {
                 if (firstRequest)
                 {
-                    await Task.Delay(1000, innerCancellationToken);
+                    await Task.Delay(1000, innerCancellationToken).ConfigureAwait(false);
                     firstRequest = false;
                 }
-                exportStatus = await BolApiCaller.ProcessStatus.GetStatusByProcessId(offerExportRequest.Id);
+                exportStatus = await BolApiCaller.ProcessStatus.GetStatusByProcessId(offerExportRequest.Id).ConfigureAwait(false);
                 if (exportStatus.Status == "FAILURE")
                 {
                     throw new BolRetailerApiException(exportStatus.ErrorMessage);
                 }
                 if (exportStatus.Status != "SUCCESS")
                 {
-                    await Task.Delay(4000, innerCancellationToken);
+                    await Task.Delay(4000, innerCancellationToken).ConfigureAwait(false);
                 }
             }
-            return await RetrieveOfferExportFile(exportStatus.EntityId.ToString());
+            return await RetrieveOfferExportFile(exportStatus.EntityId.ToString()).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -118,8 +118,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<Offer> GetOffer(string offerId)
         {
-            var response = await Get("/offers/" + offerId);
-            return await BolApiHelper.GetContentFromResponse<Offer>(response);
+            var response = await Get("/offers/" + offerId).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<Offer>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -132,8 +132,8 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(updateOffer))
             {
-                var response = await Put("/offers/" + offerId, content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put("/offers/" + offerId, content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -144,8 +144,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<StatusResponse> DeleteOffer(string offerId)
         {
-            var response = await Delete("/offers/" + offerId);
-            return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+            var response = await Delete("/offers/" + offerId).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -159,8 +159,8 @@ namespace Twinvision.BolRetailerApi
             var pricingContainer = new UpdatePriceContainer(pricing);
             using (var content = BolApiHelper.BuildContentFromObject(pricingContainer))
             {
-                var response = await Put($"/offers/{offerId}/price", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/offers/{offerId}/price", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -174,8 +174,8 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(stock))
             {
-                var response = await Put($"/offers/{offerId}/stock", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/offers/{offerId}/stock", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
     }

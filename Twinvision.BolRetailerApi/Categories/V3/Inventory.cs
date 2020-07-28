@@ -41,8 +41,8 @@ namespace Twinvision.BolRetailerApi
             {
                 queryParameters.Add("query", query);
             }
-            var response = await Get("/inventory", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<OfferListContainer>(response);
+            var response = await Get("/inventory", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<OfferListContainer>(response).ConfigureAwait(false);
         }
     }
 }

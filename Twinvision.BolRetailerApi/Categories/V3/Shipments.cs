@@ -31,8 +31,8 @@ namespace Twinvision.BolRetailerApi
                 { "fulfilment-method", fulFilmentType.ToString() },
                 { "order-id", orderId }
             };
-            var response = await Get($"/shipments", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<ShipmentsContainer>(response);
+            var response = await Get($"/shipments", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<ShipmentsContainer>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<DetailedShipment> GetShipmentById(string shipmentId)
         {
-            var response = await Get($"/shipments/{shipmentId}");
-            return await BolApiHelper.GetContentFromResponse<DetailedShipment>(response);
+            var response = await Get($"/shipments/{shipmentId}").ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<DetailedShipment>(response).ConfigureAwait(false);
         }
     }
 }

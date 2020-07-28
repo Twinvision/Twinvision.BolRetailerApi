@@ -37,8 +37,8 @@ namespace Twinvision.BolRetailerApi
                 { "year", year.ToString() },
                 { "week", week.ToString() }
             };
-            var response = await Get("/insights/performance/indicator", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<PerformanceIndicatorsContainer>(response);
+            var response = await Get("/insights/performance/indicator", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<PerformanceIndicatorsContainer>(response).ConfigureAwait(false);
         }
     }
 }

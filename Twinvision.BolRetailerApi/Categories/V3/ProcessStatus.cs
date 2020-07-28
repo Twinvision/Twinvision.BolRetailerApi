@@ -34,8 +34,8 @@ namespace Twinvision.BolRetailerApi
                 { "event-type", eventType.ToString() },
                 { "page", page.ToString() }
             };
-            var response = await Get("/process-status", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<ProcessStatusesContainer>(response);
+            var response = await Get("/process-status", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<ProcessStatusesContainer>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<ProcessStatus> GetStatusByProcessId(string processStatusId)
         {
-            var response = await Get("/process-status/" + processStatusId.ToString());
-            return await BolApiHelper.GetContentFromResponse<ProcessStatus>(response);
+            var response = await Get("/process-status/" + processStatusId.ToString()).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<ProcessStatus>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace Twinvision.BolRetailerApi
             };
             using (var content = BolApiHelper.BuildContentFromObject(newObject))
             {
-                var response = await Post("/process-status", content);
-                return await BolApiHelper.GetContentFromResponse<ProcessStatusesContainer>(response);
+                var response = await Post("/process-status", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<ProcessStatusesContainer>(response).ConfigureAwait(false);
             }
         }
     }

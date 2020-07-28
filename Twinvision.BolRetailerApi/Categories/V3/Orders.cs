@@ -31,8 +31,8 @@ namespace Twinvision.BolRetailerApi
                 { "page", page.ToString() },
                 { "fulfilment-method", fulFilmentType.ToString() }
             };
-            var response = await Get("/orders", queryParameters);
-            return await BolApiHelper.GetContentFromResponse<OrdersResponse>(response);
+            var response = await Get("/orders", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<OrdersResponse>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<OrderDetails> GetOrder(string orderId)
         {
-            var response = await Get("/orders/" + orderId);
-            return await BolApiHelper.GetContentFromResponse<OrderDetails>(response);
+            var response = await Get("/orders/" + orderId).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<OrderDetails>(response).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace Twinvision.BolRetailerApi
             };
             using (var content = BolApiHelper.BuildContentFromObject(newObject))
             {
-                var response = await Put($"/orders/{orderItemId}/cancellation", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/orders/{orderItemId}/cancellation", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
@@ -78,8 +78,8 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(shippingInfo))
             {
-                var response = await Put($"/orders/{orderItemId}/shipment", content);
-                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response);
+                var response = await Put($"/orders/{orderItemId}/shipment", content).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
     }
