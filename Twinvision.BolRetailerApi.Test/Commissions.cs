@@ -33,6 +33,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var commission = await bolApiCaller.Commissions.GetCommissionByEAN("8712626055143", "GOOD", 24.50m);
+
+            Assert.AreEqual(commission.Condition, "GOOD");
         }
 
         [TestMethod]
@@ -40,6 +42,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var commission = await bolApiCaller.Commissions.GetCommissionByEAN("8718526069334", "NEW", 25.00m);
+
+            Assert.AreEqual(commission.Condition, "NEW");
         }
 
         [TestMethod]
@@ -55,7 +59,9 @@ namespace Twinvision.BolRetailerApi.Test
                 new CommissionQuery("8718526069334", "NEW", 25.00m)
             };
             var commissionQueries = new CommissionQueriesContainer(commissionQueryList.ToArray());
-            var commissions = await bolApiCaller.Commissions.GetCommissions(commissionQueries);
+            var commissionContainer = await bolApiCaller.Commissions.GetCommissions(commissionQueries);
+
+            Assert.AreEqual(commissionContainer.Commissions.Length, 5);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Twinvision.BolRetailerApi
 {
     public class CommissionsContainer
     {
-        public Commission[] Commissions { get; }
+        public Commission[] Commissions { get; set; }
     }
 }
