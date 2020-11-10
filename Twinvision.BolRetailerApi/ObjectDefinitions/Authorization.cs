@@ -1,4 +1,4 @@
-﻿namespace Twinvision.BolRetailerApi
+﻿namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public class Authorization
     {

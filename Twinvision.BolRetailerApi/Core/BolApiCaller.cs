@@ -30,11 +30,13 @@ namespace Twinvision.BolRetailerApi
         public Invoices Invoices { get; }
         public Offers Offers { get; }
         public Orders Orders { get; }
+        public Pricing Pricing { get; }
         public ProcessStatuses ProcessStatus { get; }
         public Reductions Reductions { get; }
         public Returns Returns { get; }
         public Shipments Shipments { get; }
         public ShippingLabels ShippingLabels { get; }
+        public Subscriptions Subscriptions { get; }
         public Transports Transports { get; }
 
         /// <summary>
@@ -54,11 +56,13 @@ namespace Twinvision.BolRetailerApi
             Invoices = new Invoices(this);
             Offers = new Offers(this);
             Orders = new Orders(this);
+            Pricing = new Pricing(this);
             ProcessStatus = new ProcessStatuses(this);
             Reductions = new Reductions(this);
             Returns = new Returns(this);
             Shipments = new Shipments(this);
             ShippingLabels = new ShippingLabels(this);
+            Subscriptions = new Subscriptions(this);
             Transports = new Transports(this);
         }
     }

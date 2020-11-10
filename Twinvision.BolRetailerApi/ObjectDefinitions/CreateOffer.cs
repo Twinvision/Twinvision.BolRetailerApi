@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public class CreateOffer
     {
@@ -17,13 +17,13 @@ namespace Twinvision.BolRetailerApi
         /// <summary>In case the item is not known to bol.com you can use this field to identify this particular product. Note: in case the product is known to bol.com, the unknown product title will not be stored.</summary>
         public string UnknownProductTitle { get; set; }
         /// <summary>Pricings for the offer.</summary>
-        public Pricing Pricing { get; set; }
+        public PricingContainer Pricing { get; set; }
         /// <summary>Stocks for the offer</summary>
         public Stock Stock { get; set; }
         /// <summary>Fulfilment specifications for the offer.</summary>
         public Fulfilment Fulfilment { get; set; }
 
-        public CreateOffer(string ean, Condition condition, Pricing pricing, Stock stock, Fulfilment fulfilment)
+        public CreateOffer(string ean, Condition condition, PricingContainer pricing, Stock stock, Fulfilment fulfilment)
         {
             Ean = ean;
             Condition = condition;

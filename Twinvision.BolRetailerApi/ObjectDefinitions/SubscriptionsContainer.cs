@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
-    public class OfferExportConfiguration
+    public class SubscriptionsContainer
     {
-        public string Format { get; set; } = "CSV";
+        public List<NotificationSubscription> Subscriptions { get; set; }
     }
 }

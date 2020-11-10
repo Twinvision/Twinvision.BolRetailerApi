@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi
 {
     public class UpdatePriceContainer
     {
-        public Pricing Pricing { get; set; }
-        public UpdatePriceContainer(Pricing pricing)
+        public PricingContainer Pricing { get; set; }
+        public UpdatePriceContainer(PricingContainer pricing)
         {
             Pricing = pricing;
         }

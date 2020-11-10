@@ -1,4 +1,4 @@
-﻿namespace Twinvision.BolRetailerApi
+﻿namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public enum ConditionName { NEW, AS_NEW, GOOD, REASONABLE, MODERATE }
 

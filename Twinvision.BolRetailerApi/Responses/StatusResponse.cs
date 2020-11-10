@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi
 {

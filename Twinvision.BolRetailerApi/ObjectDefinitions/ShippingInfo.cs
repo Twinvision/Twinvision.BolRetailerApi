@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     /// <summary>
     /// Ship a single order item within a customer order by providing shipping information. 

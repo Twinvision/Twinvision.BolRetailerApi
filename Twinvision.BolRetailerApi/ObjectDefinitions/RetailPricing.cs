@@ -10,16 +10,16 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
-    public class Pricing
+    public class RetailPricing
     {
         /// <summary>A set of prices (containing a quantity and selling price) that apply to this offer.</summary>
-        public List<BundlePrice> BundlePrices { get; set; }
+        public List<RetailPrice> RetailPrices { get; set; }
 
-        public Pricing(List<BundlePrice> bundlePrices)
+        public RetailPricing(List<RetailPrice> retailPrices)
         {
-            BundlePrices = bundlePrices;
+            RetailPrices = retailPrices;
         }
     }
 }

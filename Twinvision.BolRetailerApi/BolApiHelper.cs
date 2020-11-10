@@ -25,13 +25,13 @@ namespace Twinvision.BolRetailerApi
         /// </summary>
         /// <param name="contentObject">The object to convert</param>
         /// <returns></returns>
-        public static HttpContent BuildContentFromObject(object contentObject)
+        public static HttpContent BuildContentFromObject(object contentObject, string contentType = AcceptHeaders.V3Json)
         {
             var settings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
-            return new StringContent(JsonConvert.SerializeObject(contentObject, settings), Encoding.UTF8, "application/vnd.retailer.v3+json");
+            return new StringContent(JsonConvert.SerializeObject(contentObject, settings), Encoding.UTF8, contentType);
         }
 
         /// <summary>

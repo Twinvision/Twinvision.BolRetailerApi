@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public class ProcessStatusQuery
     {

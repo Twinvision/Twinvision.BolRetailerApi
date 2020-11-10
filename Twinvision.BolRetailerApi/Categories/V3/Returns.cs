@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Twinvision.BolRetailerApi.Containers;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi
 {

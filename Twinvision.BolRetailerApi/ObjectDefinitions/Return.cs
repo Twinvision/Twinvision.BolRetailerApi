@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Twinvision.BolRetailerApi;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public class Return
     {

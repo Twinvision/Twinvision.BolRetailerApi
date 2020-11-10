@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
-    public class BundlePrice
+    public class RetailPrice
     {
         /// <summary></summary>
-        public int Quantity { get; set; }
+        public string Country { get; set; }
         /// <summary></summary>
         public decimal Price { get; set; }
 
-        public BundlePrice(int quantity, decimal price)
+        public RetailPrice(string country, decimal price)
         {
-            Quantity = quantity;
+            Country = country;
             Price = price;
         }
     }

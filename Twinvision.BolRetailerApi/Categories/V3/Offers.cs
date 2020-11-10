@@ -4,6 +4,8 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
+using Twinvision.BolRetailerApi.ObjectDefinitions.V4;
 
 namespace Twinvision.BolRetailerApi
 {
@@ -154,7 +156,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="offerId">Unique identifier for an offer.</param>
         /// <param name="pricing">New pricing for the offer.</param>
         /// <returns></returns>
-        public async Task<StatusResponse> UpdateOfferPrice(string offerId, Pricing pricing)
+        public async Task<StatusResponse> UpdateOfferPrice(string offerId, PricingContainer pricing)
         {
             var pricingContainer = new UpdatePriceContainer(pricing);
             using (var content = BolApiHelper.BuildContentFromObject(pricingContainer))
@@ -177,6 +179,36 @@ namespace Twinvision.BolRetailerApi
                 var response = await Put($"/offers/{offerId}/stock", content).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
+        }
+
+        /// <summary>
+        /// V4 BETA Request an unpublished offer report
+        /// Request an unpublished offer report containing all unpublished offers and reasons.
+        /// </summary>
+        /// <param name="fileFormatContainer">File format container defaults to "CSV"</param>
+        public async Task<StatusResponse> RequestUnpublishedOfferReport(FileFormatContainer fileFormatContainer = null)
+        {
+            if (fileFormatContainer == null)
+            {
+                fileFormatContainer = new FileFormatContainer("CSV");
+            }
+            using (var content = BolApiHelper.BuildContentFromObject(fileFormatContainer, AcceptHeaders.V4Json))
+            {
+                var response = await Post($"/offers/unpublished", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary>
+        /// V4 BETA Retrieve an unpublished offer report by report id
+        /// Retrieve an unpublished offer report containing all unpublished offers and reasons.
+        /// </summary>
+        /// <param name="reportId">Unique identifier for unpublished offer report.</param>
+        /// <returns></returns>
+        public async Task<string> RetrieveUnpublishedOfferReport(string reportId)
+        {
+            var response = await Get($"/offers/unpublished/{reportId}", acceptHeader: AcceptHeaders.V4Csv).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }
 }

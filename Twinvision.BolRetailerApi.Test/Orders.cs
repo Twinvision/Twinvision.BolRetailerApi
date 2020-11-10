@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Twinvision.BolRetailerApi;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi.Test
 {

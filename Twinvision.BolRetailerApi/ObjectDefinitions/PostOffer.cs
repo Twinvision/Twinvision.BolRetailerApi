@@ -10,7 +10,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twinvision.BolRetailerApi
+namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
     public class PostOffer
     {
@@ -19,7 +19,7 @@ namespace Twinvision.BolRetailerApi
         public string ReferenceCode { get; set; }
         public bool OnHoldByRetailer { get; set; }
         public string UnknownProductTitle { get; set; }
-        public Pricing Pricing { get; set; }
+        public PricingContainer Pricing { get; set; }
         public Stock Stock { get; set; }
         public Fulfilment Fulfilment { get; set; }
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi.Test
 {
@@ -44,7 +45,7 @@ namespace Twinvision.BolRetailerApi.Test
             {
                 new BundlePrice(1, 5.55m)
             };
-            var pricing = new Pricing(bundlePrices);
+            var pricing = new PricingContainer(bundlePrices);
             var stock = new Stock(5, false);
             var fulfilment = new Fulfilment(FulFilmentType.FBB);
             var createOffer = new CreateOffer("9789492493804", condition, pricing, stock, fulfilment)
@@ -104,7 +105,7 @@ namespace Twinvision.BolRetailerApi.Test
             {
                 new BundlePrice(1, 6.55m)
             };
-            var pricing = new Pricing(bundlePrices);
+            var pricing = new PricingContainer(bundlePrices);
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.UpdateOfferPrice(firstOffer.OfferId.ToString(), pricing);
         }
@@ -124,6 +125,20 @@ namespace Twinvision.BolRetailerApi.Test
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.DeleteOffer(firstOffer.OfferId.ToString());
+        }
+
+        [TestMethod]
+        public async Task RequestUnpublishedOfferReport()
+        {
+            var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
+            var result = await bolApiCaller.Offers.RequestUnpublishedOfferReport();
+        }
+
+        [TestMethod]
+        public async Task RetrieveUnpublishedOfferReport()
+        {
+            var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
+            var result = await bolApiCaller.Offers.RetrieveUnpublishedOfferReport("3f2bb9f5-79dd-472c-aeb7-fef416b77928");
         }
     }
 }

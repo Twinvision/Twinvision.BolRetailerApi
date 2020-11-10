@@ -33,7 +33,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task AddTransportInformation()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Transports.AddTransportInformation("358612589", new BolRetailerApi.Transport("TNT", "3SAOLD1234567"));
+            var response = await bolApiCaller.Transports.AddTransportInformation("358612589", new ObjectDefinitions.Transport("TNT", "3SAOLD1234567"));
         }
 
         [TestMethod]
