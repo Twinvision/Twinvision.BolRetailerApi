@@ -10,7 +10,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\mdon\OneDrive\Bureaublad\RetailApiNew\Twinvision.BolRetailerApi\Twinvision.BolRetailerApi\Twinvision.BolRetailerApi.xml</DocumentationFile>
   </PropertyGroup>
+	<PropertyGroup>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt"/>
+    </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
