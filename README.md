@@ -14,6 +14,7 @@ The library also handles recreation of timed out authentications so you don't ha
  - Returns
  - Shipment
  - ShipmentLabels
+ - Subscriptions (Beta)
  - Transport
  - Inbounds
  - Insights
