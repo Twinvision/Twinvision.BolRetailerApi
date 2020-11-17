@@ -6,13 +6,11 @@
     <title>Twinvision.BolRetailerApi</title>
     <authors>Twinvision, Marco Donkers</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A NETStandard library for the Bol Retailer Api</description>
+    <description>A C# .NET Standard 1.3 class library of all the endpoints for the BOL RETAILER API</description>
     <copyright>All Rights Reserved - Twinvision</copyright>
 	<dependencies>
-	<group>
-		<dependency id="Newtonsoft.Json" version="12.0.3" />
-	</group>
 		<group targetFramework="netstandard1.3">
+			<dependency id="Newtonsoft.Json" version="12.0.3" />
 		</group>
 	</dependencies>
 	<license type="expression">MIT</license>
