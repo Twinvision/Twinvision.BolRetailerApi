@@ -2,7 +2,7 @@
 
 # BolRetailerApi
 A C# .NET Standard class library of all the endpoints for the [BOL RETAILER API](https://api.bol.com/retailer/public)
-[![Build Status](https://dev.azure.com/TwinvisionSoftware/BolRetailerApi/_apis/build/status/Twinvision.Twinvision.BolRetailerApi?branchName=master)](https://dev.azure.com/TwinvisionSoftware/BolRetailerApi/_build/latest?definitionId=13&branchName=master)
+[Build Status](https://dev.azure.com/TwinvisionSoftware/BolRetailerApi/_apis/build/status/Twinvision.Twinvision.BolRetailerApi?branchName=master)
 
 This project aims at creating a library which forces you to fill in all required information to perform each request.
 It then handles all the more detailed HttpClient configurations, and will deal with deserialisation.
