@@ -2,6 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Twinvision.BolRetailerApi</id>
+	<version>1.0.14</version>
     <title>Twinvision.BolRetailerApi</title>
     <authors>Twinvision.BolRetailerApi</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
