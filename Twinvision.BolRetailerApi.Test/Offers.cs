@@ -53,6 +53,8 @@ namespace Twinvision.BolRetailerApi.Test
                 ReferenceCode = "Test-Api"
             };
             var result = await bolApiCaller.Offers.CreateNewOffer(createOffer);
+
+            Assert.IsTrue(result.Description == "Create an offer with ean 9789492493804.");
         }
 
         [TestMethod]
@@ -60,6 +62,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var result = await bolApiCaller.Offers.RequestOfferExportFile();
+
+            Assert.IsTrue(result.Description == "Create an offer export.");
         }
 
         [TestMethod]
@@ -67,6 +71,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var result = await bolApiCaller.Offers.RetrieveOfferExportFile("73985e00-d461-4461-80e7-d3fea8d23ef4");
+
+            Assert.IsTrue(result.StartsWith("offerId,ean,conditionName"));
         }
 
         [TestMethod]
@@ -75,6 +81,8 @@ namespace Twinvision.BolRetailerApi.Test
             // Not done in test environment because it requires processing which is not supported in the test environment
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, false);
             var response = await bolApiCaller.Offers.GetOfferExportFile();
+
+            Assert.IsTrue(response.StartsWith("offerId,ean,conditionName,conditionCategory"));
         }
 
         [TestMethod]
@@ -82,6 +90,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var result = await bolApiCaller.Offers.GetOffer("13722de8-8182-d161-5422-4a0a1caab5c8");
+
+            Assert.IsTrue(result.Ean == "3165140085229");
         }
 
         [TestMethod]
@@ -95,6 +105,8 @@ namespace Twinvision.BolRetailerApi.Test
             };
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.UpdateOffer(firstOffer.OfferId.ToString(), offerUpdate);
+
+            Assert.IsTrue(result.Description == "Update an offer with offerId 4ae7a221-65e7-a333-e620-3f8e1caab5c3.");
         }
 
         [TestMethod]
@@ -108,6 +120,8 @@ namespace Twinvision.BolRetailerApi.Test
             var pricing = new PricingContainer(bundlePrices);
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.UpdateOfferPrice(firstOffer.OfferId.ToString(), pricing);
+
+            Assert.IsTrue(result.Description == "Update price for offer with id 4ae7a221-65e7-a333-e620-3f8e1caab5c3.");
         }
 
         [TestMethod]
@@ -117,6 +131,8 @@ namespace Twinvision.BolRetailerApi.Test
             var stock = new Stock(15, false);
             var firstOffer = openOffers.First();
             var result = await bolApiCaller.Offers.UpdateOfferStock(firstOffer.OfferId.ToString(), stock);
+
+            Assert.IsTrue(result.Description == "Update stock for offer with id 4ae7a221-65e7-a333-e620-3f8e1caab5c3.");
         }
 
         [TestMethod]

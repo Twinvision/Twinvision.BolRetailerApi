@@ -36,6 +36,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var result = await bolApiCaller.Pricing.GetRetailPricingInformationForEAN("0000007740404");
+
+            Assert.IsTrue(result.RetailPrices.Count == 2);
         }
     }
 }

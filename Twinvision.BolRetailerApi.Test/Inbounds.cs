@@ -95,6 +95,7 @@ namespace Twinvision.BolRetailerApi.Test
                     new ProductLabel("5030917058226", 2)
                 });
             var productLabel = await bolApiCaller.Inbounds.GetFBBProductLabelsByEAN(productLabelContainer);
+
             Assert.IsTrue(productLabel.StartsWith("THIS IS A FAKE PDF FILE"));
         }
 
@@ -102,6 +103,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetInboundById()
         {
             var inbound = await bolApiCaller.Inbounds.GetInboundById(5850051250);
+
             Assert.IsTrue(inbound.Products.Length > 0);
         }
 
@@ -110,12 +112,15 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var inbound = await bolApiCaller.Inbounds.GetPackingListByInboundId(5850051250);
 
+            Assert.IsTrue(inbound.StartsWith("THIS IS A FAKE PDF FILE"));
         }
 
         [TestMethod]
         public async Task GetFBBShippinglabelByInboundId()
         {
             var shippingLabel = await bolApiCaller.Inbounds.GetFBBShippingLabelByInboundId(5850051250);
+
+            Assert.IsTrue(shippingLabel.StartsWith("THIS IS A FAKE PDF FILE"));
         }
     }
 }

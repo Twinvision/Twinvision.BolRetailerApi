@@ -33,14 +33,18 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetReturns()
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
-            await api.Returns.GetReturns();
+            var response = await api.Returns.GetReturns();
+
+            Assert.IsTrue(response.Returns[0].Ean == "0634154562956");
         }
 
         [TestMethod]
         public async Task GetReturnByRMAId()
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
-            await api.Returns.GetReturnByRMAId(86123452);
+            var response = await api.Returns.GetReturnByRMAId(86123452);
+
+            Assert.IsTrue(response.Ean == "8712626055150");
         }
 
 
@@ -48,7 +52,9 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task HandleReturn()
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
-            await api.Returns.HandleReturn(86129741, new HandleReturnContainer(1, HandlingResult.RETURN_DOES_NOT_MEET_CONDITIONS));
+            var response = await api.Returns.HandleReturn(86129741, new HandleReturnContainer(1, HandlingResult.RETURN_DOES_NOT_MEET_CONDITIONS));
+
+            Assert.IsTrue(response.EventType == "HANDLE_RETURN_ITEM");
         }
     }
 }

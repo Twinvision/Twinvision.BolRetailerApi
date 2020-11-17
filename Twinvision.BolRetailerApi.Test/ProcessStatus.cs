@@ -33,6 +33,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
             var status = await api.ProcessStatus.GetStatusByProcessId("1");
+
+            Assert.IsTrue(status.EventType == "CONFIRM_SHIPMENT");
         }
 
         [TestMethod]
@@ -40,6 +42,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
             var status = await api.ProcessStatus.GetProcessStatusByEntityAndEvent("555551", ProcessEventType.CONFIRM_SHIPMENT);
+
+            Assert.IsTrue(status.ProcessStatuses[0].EventType == "CONFIRM_SHIPMENT");
         }
 
         [TestMethod]
@@ -47,6 +51,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var api = new BolApiCaller(testClientId, testClientSecret, true);
             var statuses = await api.ProcessStatus.GetProcessStatusesByIds(new []{ "1", "2" });
+
+            Assert.IsTrue(statuses.ProcessStatuses[0].EventType == "CONFIRM_SHIPMENT");
         }
     }
 }

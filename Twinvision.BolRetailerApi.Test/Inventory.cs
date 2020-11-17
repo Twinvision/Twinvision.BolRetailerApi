@@ -36,6 +36,8 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetLVBOrFBBInventory()
         {
             var inventory = await bolApiCaller.Inventory.GetLVBOrFBBInventory();
+
+            Assert.IsTrue(inventory.offers[0].Title.StartsWith("Star Wars"));
         }
     }
 }

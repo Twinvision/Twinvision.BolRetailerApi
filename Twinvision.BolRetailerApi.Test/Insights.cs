@@ -45,6 +45,8 @@ namespace Twinvision.BolRetailerApi.Test
                 PerformanceName.RETURNS,
                 PerformanceName.REVIEWS
             }, 2019, 10);
+
+            Assert.IsTrue(indicator.PerformanceIndicators[0].Name == "cancellations");
         }
     }
 }

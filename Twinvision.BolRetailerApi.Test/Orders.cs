@@ -34,6 +34,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+
+            Assert.IsTrue(response.Orders.Length > 0);
         }
 
         [TestMethod]
@@ -41,13 +43,12 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
-            if (response.Orders.Length > 0)
+            foreach (var order in response.Orders)
             {
-                foreach (var order in response.Orders)
-                {
-                    var orderResponse = await bolApiCaller.Orders.GetOrder(order.OrderId);
-                }
+                var orderResponse = await bolApiCaller.Orders.GetOrder(order.OrderId);
+                Assert.IsTrue(orderResponse.OrderItems.Length > 0);
             }
+            Assert.IsTrue(response.Orders.Length > 0);
         }
 
         [TestMethod]
@@ -55,16 +56,19 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
-            if (response.Orders.Length > 0)
+            var requestWasSend = false;
+            foreach (var order in response.Orders)
             {
-                foreach (var order in response.Orders)
+                foreach (var orderItem in order.OrderItems)
                 {
-                    foreach (var orderItem in order.OrderItems)
-                    {
-                        await bolApiCaller.Orders.CancelOrderByOrderItemId(orderItem.OrderItemId, CancelReason.TECH_ISSUE);
-                    }
+                    var result = await bolApiCaller.Orders.CancelOrderByOrderItemId(orderItem.OrderItemId, CancelReason.TECH_ISSUE);
+                    requestWasSend = true;
+                    Assert.IsTrue(result.EventType == "CANCEL_ORDER");
                 }
             }
+
+            Assert.IsTrue(requestWasSend);
+            Assert.IsTrue(response.Orders.Length > 0);
         }
 
         [TestMethod]
@@ -72,19 +76,22 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
-            if (response.Orders.Length > 0)
+            var requestWasSend = false;
+            foreach (var order in response.Orders)
             {
-                foreach (var order in response.Orders)
+                foreach (var orderItem in order.OrderItems)
                 {
-                    foreach(var orderItem in order.OrderItems)
-                    {
-                        var shippingInfo = new ShippingInfo();
-                        await bolApiCaller.Orders.ShipOrderItem(orderItem.OrderItemId, shippingInfo);
-                        //The BOL api limits the amount of calls on this endpoint
-                        await Task.Delay(100);
-                    }
+                    var shippingInfo = new ShippingInfo();
+                    var shipmentResponse = await bolApiCaller.Orders.ShipOrderItem(orderItem.OrderItemId, shippingInfo);
+                    requestWasSend = true;
+                    Assert.IsTrue(shipmentResponse.EventType == "CONFIRM_SHIPMENT");
+                    //The BOL api limits the amount of calls on this endpoint
+                    await Task.Delay(100);
                 }
             }
+
+            Assert.IsTrue(requestWasSend);
+            Assert.IsTrue(response.Orders.Length > 0);
         }
     }
 }

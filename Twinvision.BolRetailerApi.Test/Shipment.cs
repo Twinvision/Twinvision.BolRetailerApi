@@ -34,6 +34,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Shipments.GetShipmentList(page:1, fulFilmentType: FulFilmentType.FBR);
+
+            Assert.IsTrue(response.Shipments.Length == 4);
         }
 
         [TestMethod]
@@ -41,6 +43,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Shipments.GetShipmentById("914587795");
+
+            Assert.IsTrue(response.ShipmentReference == "Shipment1");
         }
     }
 }

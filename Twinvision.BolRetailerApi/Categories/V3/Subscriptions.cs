@@ -52,7 +52,7 @@ namespace Twinvision.BolRetailerApi
         {
             using (var content = BolApiHelper.BuildContentFromObject(new object { }, AcceptHeaders.V4Json))
             {
-                var response = await Post("/subscriptions", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                var response = await Post("/subscriptions/test", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }

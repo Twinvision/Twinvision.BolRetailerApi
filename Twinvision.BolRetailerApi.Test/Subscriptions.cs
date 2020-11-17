@@ -43,7 +43,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task CreatePushNotificationSubscription()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var notificationSubscription = new CreateNotificationSubscription(new string[]{ "PROCESS_STATUS" }, "www.test.com/test");
+            var notificationSubscription = new CreateNotificationSubscription(new string[]{ "PROCESS_STATUS" }, "https://www.test.com/test");
             var result = await bolApiCaller.Subscriptions.CreatePushNotificationSubscription(notificationSubscription);
 
             Assert.IsTrue(result.EventType == "CREATE_SUBSCRIPTION");
@@ -72,7 +72,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task UpdatePushNotificationSubscription()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var notificationSubscription = new CreateNotificationSubscription(new string[] { "PROCESS_STATUS" }, "/test");
+            var notificationSubscription = new CreateNotificationSubscription(new string[] { "PROCESS_STATUS" }, "https://www.test.com/test");
             var result = await bolApiCaller.Subscriptions.UpdatePushNotificationSubscription(1234, notificationSubscription);
 
             Assert.IsTrue(result.EventType == "UPDATE_SUBSCRIPTION");

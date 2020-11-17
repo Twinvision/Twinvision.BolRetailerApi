@@ -33,6 +33,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.ShippingLabels.GetShippingLabelOrderItemId("6702312887");
+
+            Assert.IsTrue(response.PurchasableShippingLabels.Length == 3);
         }
     }
 }

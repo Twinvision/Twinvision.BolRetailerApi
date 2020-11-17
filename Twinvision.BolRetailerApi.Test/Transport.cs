@@ -34,6 +34,8 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await bolApiCaller.Transports.AddTransportInformation("358612589", new ObjectDefinitions.Transport("TNT", "3SAOLD1234567"));
+
+            Assert.IsTrue(response.EventType == "CHANGE_TRANSPORT");
         }
 
         [TestMethod]

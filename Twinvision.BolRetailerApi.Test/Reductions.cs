@@ -35,12 +35,15 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var reductions = await bolApiCaller.Reductions.GetReductionsCSV();
 
+            Assert.IsTrue(reductions.ReductionsCsv.StartsWith("EAN,MaximumPrice,CostReduction,StartDate,EndDate"));
         }
 
         [TestMethod]
         public async Task GetLatestReductionsFilename()
         {
             var reductionFileName = await bolApiCaller.Reductions.GetLatestReductionFileName();
+
+            Assert.IsTrue(reductionFileName == "Verlaging_Bemiddelingsbijdrage_04052018_0005.csv");
         }
 
         [TestMethod]
@@ -48,6 +51,7 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var reductions = await bolApiCaller.Reductions.GetReductionsCSV();
             var reductionFileName = await bolApiCaller.Reductions.GetLatestReductionFileName();
+
             Assert.AreEqual(reductions.LatestReductionFileName, reductionFileName);
         }
     }
