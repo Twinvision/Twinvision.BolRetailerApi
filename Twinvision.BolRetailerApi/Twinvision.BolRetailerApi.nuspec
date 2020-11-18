@@ -8,11 +8,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A C# .NET Standard 1.3 class library of all the endpoints for the BOL RETAILER API</description>
     <copyright>All Rights Reserved - Twinvision</copyright>
-	<dependencies>
-		<group targetFramework="netstandard1.3">
-			<dependency id="Newtonsoft.Json" version="12.0.3" />
-		</group>
-	</dependencies>
 	<license type="expression">MIT</license>
   </metadata>
 </package>
