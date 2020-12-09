@@ -2,12 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Twinvision.BolRetailerApi</id>
-	  <version>1.0.14</version>
+	  <version>1.0.20</version>
     <title>Twinvision.BolRetailerApi</title>
-    <authors>Twinvision, Marco Donkers</authors>
+    <authors>Marco Donkers, Wouter Leenders</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A C# .NET Standard 1.3 class library of all the endpoints for the BOL RETAILER API</description>
-    <copyright>All Rights Reserved - Twinvision</copyright>
+    <copyright>All Rights Reserved - Twinvision Software BV</copyright>
 	<license type="expression">MIT</license>
+   <dependencies>
+    <group targetFramework=".NETStandard1.3">
+      <dependency id="Newtonsoft.Json" version="10.0.1" exclude="Build,Analyzers" />
+    </group>
+  </dependencies>
   </metadata>
+ 
+  <files>
+    <file src="bin\Release\netstandard1.3\Twinvision.BolRetailerApi.dll" target="lib/netstandard1.3" />
+    <file src="bin\Release\netstandard1.3\Twinvision.BolRetailerApi.pdb" target="lib/netstandard1.3" />
+  </files>
 </package>
