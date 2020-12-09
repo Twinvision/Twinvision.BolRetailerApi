@@ -2,33 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Class definitions for the Bol Retailer Api</Description>
     <Copyright>All Rights Reserved - Twinvision</Copyright>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>Twinvision.BolRetailerApi\Twinvision.BolRetailerApi.xml</DocumentationFile>
   </PropertyGroup>
-	<PropertyGroup>
-        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    </PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <DocumentationFile></DocumentationFile>
+    <DocumentationFile>Twinvision.BolRetailerApi\Twinvision.BolRetailerApi.xml</DocumentationFile>
 	  <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
 	  <DebugType>full</DebugType>
 	  <DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="Assemblies\**" />
-	  <EmbeddedResource Remove="Assemblies\**" />
-	  <None Remove="Assemblies\**" />
-	</ItemGroup>
-
-    <ItemGroup>
-        <None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
-    </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
   </ItemGroup>
