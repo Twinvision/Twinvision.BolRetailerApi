@@ -52,6 +52,26 @@ namespace Twinvision.BolRetailerApi.Test
         }
 
         [TestMethod]
+        public async Task OrderItemExactDeliveryDateOrLatestDeliveryDateIsFilled()
+        {
+            var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+            foreach (var order in response.Orders)
+            {
+                var orderResponse = await bolApiCaller.Orders.GetOrder(order.OrderId);
+                Assert.IsTrue(orderResponse.OrderItems.Length > 0);
+
+                foreach (var orderItem in orderResponse.OrderItems)
+                {
+                    var eitherDateIsFilled = (orderItem.ExactDeliveryDate == null || orderItem.LatestDeliveryDate == null) &&
+                        (orderItem.ExactDeliveryDate != null || orderItem.LatestDeliveryDate != null);
+                    Assert.IsTrue(eitherDateIsFilled);
+                }
+            }
+            Assert.IsTrue(response.Orders.Length > 0);
+        }
+
+        [TestMethod]
         public async Task CancelOrder()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);

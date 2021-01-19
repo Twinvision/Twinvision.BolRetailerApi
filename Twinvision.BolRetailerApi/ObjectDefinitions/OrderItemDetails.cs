@@ -14,8 +14,9 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
         public float OfferPrice { get; set; }
         public string OfferId { get; set; }
         public float TransactionFee { get; set; }
-        public string LatestDeliveryDate { get; set; }
-        public string ExpiryDate { get; set; }
+        public DateTime? LatestDeliveryDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public DateTime? ExactDeliveryDate { get; set; }
         public string OfferCondition { get; set; }
         public bool CancelRequest { get; set; }
         public string FulfilmentMethod { get; set; }
