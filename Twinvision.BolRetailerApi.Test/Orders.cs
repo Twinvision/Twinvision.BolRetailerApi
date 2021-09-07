@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Twinvision.BolRetailerApi;
@@ -33,7 +34,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetOpenOrders()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentMethod.FBR);
 
             Assert.IsTrue(response.Orders.Length > 0);
         }
@@ -42,7 +43,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetOrder()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentMethod.FBR);
             foreach (var order in response.Orders)
             {
                 var orderResponse = await bolApiCaller.Orders.GetOrder(order.OrderId);
@@ -55,7 +56,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task OrderItemExactDeliveryDateOrLatestDeliveryDateIsFilled()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentMethod.FBR);
             foreach (var order in response.Orders)
             {
                 var orderResponse = await bolApiCaller.Orders.GetOrder(order.OrderId);
@@ -63,8 +64,8 @@ namespace Twinvision.BolRetailerApi.Test
 
                 foreach (var orderItem in orderResponse.OrderItems)
                 {
-                    var eitherDateIsFilled = (orderItem.ExactDeliveryDate == null || orderItem.LatestDeliveryDate == null) &&
-                        (orderItem.ExactDeliveryDate != null || orderItem.LatestDeliveryDate != null);
+                    var eitherDateIsFilled = (orderItem.Fulfilment.ExactDeliveryDate == null || orderItem.Fulfilment.LatestDeliveryDate == null) &&
+                        (orderItem.Fulfilment.ExactDeliveryDate != null || orderItem.Fulfilment.LatestDeliveryDate != null);
                     Assert.IsTrue(eitherDateIsFilled);
                 }
             }
@@ -75,19 +76,21 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task CancelOrder()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
-            var requestWasSend = false;
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentMethod.FBR);
+
+            var orderItemsContainer = new OrderItemCancellationContainer();
             foreach (var order in response.Orders)
             {
-                foreach (var orderItem in order.OrderItems)
+                orderItemsContainer.OrderItems = new List<OrderItemCancellation>();
+                var orderItem = new OrderItemCancellation()
                 {
-                    var result = await bolApiCaller.Orders.CancelOrderByOrderItemId(orderItem.OrderItemId, CancelReason.TECH_ISSUE);
-                    requestWasSend = true;
-                    Assert.IsTrue(result.EventType == "CANCEL_ORDER");
-                }
+                    OrderItemId = order.OrderId,
+                    ReasonCode = CancelReason.TECH_ISSUE.ToString()
+                };
+                orderItemsContainer.OrderItems.Add(orderItem);
+                await bolApiCaller.Orders.CancelOrderByOrderItemId(orderItemsContainer);
             }
 
-            Assert.IsTrue(requestWasSend);
             Assert.IsTrue(response.Orders.Length > 0);
         }
 
@@ -95,14 +98,21 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task ShipOrder()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentType.FBR);
+            var response = await bolApiCaller.Orders.GetOpenOrders(1, FulFilmentMethod.FBR);
             var requestWasSend = false;
             foreach (var order in response.Orders)
             {
                 foreach (var orderItem in order.OrderItems)
                 {
                     var shippingInfo = new ShippingInfo();
-                    var shipmentResponse = await bolApiCaller.Orders.ShipOrderItem(orderItem.OrderItemId, shippingInfo);
+                    shippingInfo.OrderItems = new List<OrderItemIdContainer>()
+                    {
+                        new OrderItemIdContainer()
+                        {
+                            OrderItemId = orderItem.OrderItemId
+                        }
+                    };
+                    var shipmentResponse = await bolApiCaller.Orders.ShipOrderItem(shippingInfo);
                     requestWasSend = true;
                     Assert.IsTrue(shipmentResponse.EventType == "CONFIRM_SHIPMENT");
                     //The BOL api limits the amount of calls on this endpoint

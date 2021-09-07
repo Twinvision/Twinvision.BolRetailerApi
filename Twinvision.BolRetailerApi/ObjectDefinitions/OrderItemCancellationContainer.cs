@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Twinvision.BolRetailerApi.ObjectDefinitions
 {
-    public class ProcessStatusQuery
+    public class OrderItemCancellationContainer
     {
-        public string ProcessStatusId { get; set; }
+        public List<OrderItemCancellation> OrderItems { get; set; }
     }
 }

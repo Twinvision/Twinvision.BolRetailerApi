@@ -8,7 +8,7 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     {
         public string Ean { get; set; }
         public string Condition { get; set; }
-        public float Price { get; set; }
+        public float UnitPrice { get; set; }
         public float FixedAmount { get; set; }
         public int Percentage { get; set; }
         public float TotalCost { get; set; }

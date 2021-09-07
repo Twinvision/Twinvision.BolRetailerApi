@@ -47,10 +47,10 @@ namespace Twinvision.BolRetailerApi.Test
             };
             var pricing = new PricingContainer(bundlePrices);
             var stock = new Stock(5, false);
-            var fulfilment = new Fulfilment(FulFilmentType.FBB);
+            var fulfilment = new SmallFulfilment(FulFilmentMethod.FBB);
             var createOffer = new CreateOffer("9789492493804", condition, pricing, stock, fulfilment)
             {
-                ReferenceCode = "Test-Api"
+                Reference = "Test-Api"
             };
             var result = await bolApiCaller.Offers.CreateNewOffer(createOffer);
 
@@ -98,7 +98,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task UpdateOffer()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var fulfilment = new Fulfilment(FulFilmentType.FBB);
+            var fulfilment = new SmallFulfilment(FulFilmentMethod.FBB);
             var offerUpdate = new UpdateOffer(fulfilment)
             {
                 OnHoldByRetailer = true

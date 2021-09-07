@@ -24,7 +24,6 @@ namespace Twinvision.BolRetailerApi
     public class BolApiCaller
     {
         public Commisions Commissions { get; }
-        public Inbounds Inbounds { get; }
         public Insights Insights { get; }
         public Inventory Inventory { get; }
         public Invoices Invoices { get; }
@@ -32,7 +31,6 @@ namespace Twinvision.BolRetailerApi
         public Orders Orders { get; }
         public Pricing Pricing { get; }
         public ProcessStatuses ProcessStatus { get; }
-        public Reductions Reductions { get; }
         public Returns Returns { get; }
         public Shipments Shipments { get; }
         public ShippingLabels ShippingLabels { get; }
@@ -50,7 +48,6 @@ namespace Twinvision.BolRetailerApi
             Task.Run(() => BolApiHttpRequestHandler.Initialize(clientId, clientSecret, useDemoEnvironment)).Wait();
 
             Commissions = new Commisions(this);
-            Inbounds = new Inbounds(this);
             Insights = new Insights(this);
             Inventory = new Inventory(this);
             Invoices = new Invoices(this);
@@ -58,7 +55,6 @@ namespace Twinvision.BolRetailerApi
             Orders = new Orders(this);
             Pricing = new Pricing(this);
             ProcessStatus = new ProcessStatuses(this);
-            Reductions = new Reductions(this);
             Returns = new Returns(this);
             Shipments = new Shipments(this);
             ShippingLabels = new ShippingLabels(this);

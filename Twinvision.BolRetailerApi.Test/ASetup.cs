@@ -18,7 +18,7 @@ namespace Twinvision.BolRetailerApi.Test
             await Task.Delay(500);
 
             var builder = new ConfigurationBuilder()
-                .AddUserSecrets<Reductions>();
+                .AddUserSecrets<Orders>();
 
             Configuration = builder.Build();
         }

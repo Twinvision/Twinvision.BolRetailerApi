@@ -7,6 +7,6 @@ namespace Twinvision.BolRetailerApi.Containers
 {
     public class OfferListContainer
     {
-        public InventoryOffer[] offers { get; set; }
+        public InventoryOffer[] inventory { get; set; }
     }
 }

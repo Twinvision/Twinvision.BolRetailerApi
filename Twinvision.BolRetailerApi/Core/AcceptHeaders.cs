@@ -16,5 +16,9 @@ namespace Twinvision.BolRetailerApi
         public const string V4Json = "application/vnd.retailer.v4+json";
         public const string V4Csv = "application/vnd.retailer.v4+csv";
         public const string V4Pdf = "application/vnd.retailer.v4+pdf";
+
+        public const string V5Json = "application/vnd.retailer.v5+json";
+        public const string V5Csv = "application/vnd.retailer.v5+csv";
+        public const string V5Pdf = "application/vnd.retailer.v5+pdf";
     }
 }

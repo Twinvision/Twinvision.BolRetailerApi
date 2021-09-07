@@ -33,7 +33,7 @@ namespace Twinvision.BolRetailerApi.Test
         public async Task GetShipmentList()
         {
             var bolApiCaller = new BolApiCaller(testClientId, testClientSecret, true);
-            var response = await bolApiCaller.Shipments.GetShipmentList(page:1, fulFilmentType: FulFilmentType.FBR);
+            var response = await bolApiCaller.Shipments.GetShipmentList(page:1, fulFilmentType: FulFilmentMethod.FBR);
 
             Assert.IsTrue(response.Shipments.Length == 4);
         }

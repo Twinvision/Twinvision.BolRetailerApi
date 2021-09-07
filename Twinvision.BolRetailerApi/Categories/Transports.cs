@@ -29,7 +29,7 @@ namespace Twinvision.BolRetailerApi
 
         public async Task<string[]> GetShippingLabelByTransportId(string transportId)
         {
-            var response = await Get($"/transports/{transportId}/shipping-label", acceptHeader: AcceptHeaders.V3Pdf).ConfigureAwait(false);
+            var response = await Get($"/transports/{transportId}/shipping-label", acceptHeader: AcceptHeaders.V5Pdf).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<string[]>(response).ConfigureAwait(false);
         }
     }

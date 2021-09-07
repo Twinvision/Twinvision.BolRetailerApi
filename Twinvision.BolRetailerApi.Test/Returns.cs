@@ -35,7 +35,7 @@ namespace Twinvision.BolRetailerApi.Test
             var api = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await api.Returns.GetReturns();
 
-            Assert.IsTrue(response.Returns[0].Ean == "0634154562956");
+            Assert.IsTrue(response.Returns[0].ReturnItems[0].Ean == "0634154562956");
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace Twinvision.BolRetailerApi.Test
             var api = new BolApiCaller(testClientId, testClientSecret, true);
             var response = await api.Returns.GetReturnByRMAId(86123452);
 
-            Assert.IsTrue(response.Ean == "8712626055150");
+            Assert.IsTrue(response.Returns[0].ReturnItems[0].Ean == "8712626055150");
         }
 
 

@@ -12,10 +12,11 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     /// </summary>
     public class ShippingInfo
     {
+        public List<OrderItemIdContainer> OrderItems { get; set; }
         /// <summary>Used for administration purposes.</summary>
         public string ShipmentReference { get; set; }
         /// <summary>Specifies shipping label to be used for this shipment. Can be retrieved through the shipping label endpoint.</summary>
-        public string ShippingLabelCode { get; set; }
+        public string ShippingLabelId { get; set; }
         /// <summary>TransportInstruction</summary>
         public Transport Transport { get; set; }
     }

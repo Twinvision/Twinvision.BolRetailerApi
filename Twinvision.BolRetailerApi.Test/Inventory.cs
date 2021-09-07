@@ -37,7 +37,7 @@ namespace Twinvision.BolRetailerApi.Test
         {
             var inventory = await bolApiCaller.Inventory.GetLVBOrFBBInventory();
 
-            Assert.IsTrue(inventory.offers[0].Title.StartsWith("Star Wars"));
+            Assert.IsTrue(inventory.inventory[0].Title.StartsWith("Star Wars"));
         }
     }
 }

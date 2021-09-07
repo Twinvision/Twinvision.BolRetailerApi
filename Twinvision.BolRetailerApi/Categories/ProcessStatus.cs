@@ -63,7 +63,7 @@ namespace Twinvision.BolRetailerApi
             var processStatusQueries = new ProcessStatusQuery[processStatusIds.Length];
             for (int i = 0; i < processStatusIds.Length; i++)
             {
-                processStatusQueries[i] = new ProcessStatusQuery() { Id = processStatusIds[i] };
+                processStatusQueries[i] = new ProcessStatusQuery() { ProcessStatusId = processStatusIds[i] };
             }
             var newObject = new
             {

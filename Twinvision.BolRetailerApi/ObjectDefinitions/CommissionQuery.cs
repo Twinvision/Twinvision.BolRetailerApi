@@ -8,13 +8,13 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     {
         public string Ean { get; set; }
         public string Condition { get; set; }
-        public decimal Price { get; set; }
+        public decimal UnitPrice { get; set; }
 
-        public CommissionQuery(string ean, string condition, decimal price)
+        public CommissionQuery(string ean, string condition, decimal unitPrice)
         {
             Ean = ean;
             Condition = condition;
-            Price = price;
+            UnitPrice = unitPrice;
         }
     }
 }

@@ -41,9 +41,9 @@ namespace Twinvision.BolRetailerApi
         /// </summary>
         /// <param name="ean">The EAN number associated with this product.</param>
         /// <param name="condition">The condition of the offer.</param>
-        /// <param name="price">The price of the product with a period as a decimal separator. The price should always have two decimals precision.</param>
+        /// <param name="unitPrice">The price of the product with a period as a decimal separator. The price should always have two decimals precision.</param>
         /// <returns></returns>
-        public async Task<Commission> GetCommissionByEAN(string ean, string condition = null, decimal? price = null)
+        public async Task<Commission> GetCommissionByEAN(string ean, string condition = null, decimal? unitPrice = null)
         {
             using (var client = new HttpClient())
             {
@@ -52,9 +52,9 @@ namespace Twinvision.BolRetailerApi
                 {
                     parameters.Add(nameof(condition), condition);
                 }
-                if (price != null)
+                if (unitPrice != null)
                 {
-                    parameters.Add(nameof(price), ((decimal)price).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
+                    parameters.Add("unit-price", ((decimal)unitPrice).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
                 }
                 var response = await Get($"/commission/{ean}", parameters);
                 return await BolApiHelper.GetContentFromResponse<Commission>(response).ConfigureAwait(false);

@@ -44,13 +44,8 @@
             </summary>
             <param name="ean">The EAN number associated with this product.</param>
             <param name="condition">The condition of the offer.</param>
-            <param name="price">The price of the product with a period as a decimal separator. The price should always have two decimals precision.</param>
+            <param name="unitPrice">The price of the product with a period as a decimal separator. The price should always have two decimals precision.</param>
             <returns></returns>
-        </member>
-        <member name="T:Twinvision.BolRetailerApi.Inbounds">
-            <summary>
-            Contains all functions used to communicate to BOL about inbounds
-            </summary>
         </member>
         <member name="T:Twinvision.BolRetailerApi.Insights">
             <summary>
@@ -176,14 +171,12 @@
         </member>
         <member name="M:Twinvision.BolRetailerApi.Offers.RequestUnpublishedOfferReport(Twinvision.BolRetailerApi.ObjectDefinitions.V4.FileFormatContainer)">
             <summary>
-            V4 BETA Request an unpublished offer report
             Request an unpublished offer report containing all unpublished offers and reasons.
             </summary>
             <param name="fileFormatContainer">File format container defaults to "CSV"</param>
         </member>
         <member name="M:Twinvision.BolRetailerApi.Offers.RetrieveUnpublishedOfferReport(System.String)">
             <summary>
-            V4 BETA Retrieve an unpublished offer report by report id
             Retrieve an unpublished offer report containing all unpublished offers and reasons.
             </summary>
             <param name="reportId">Unique identifier for unpublished offer report.</param>
@@ -194,7 +187,7 @@
             Contains all functions used to communicate to BOL about orders
             </summary>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.Orders.GetOpenOrders(System.Int32,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentType)">
+        <member name="M:Twinvision.BolRetailerApi.Orders.GetOpenOrders(System.Int32,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentMethod)">
             <summary>
             Gets a paginated list of all open orders sorted by date in descending order.
             </summary>
@@ -209,15 +202,14 @@
             <param name="orderId">The id of the order to get.</param>
             <returns></returns>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.Orders.CancelOrderByOrderItemId(System.String,Twinvision.BolRetailerApi.CancelReason)">
+        <member name="M:Twinvision.BolRetailerApi.Orders.CancelOrderByOrderItemId(Twinvision.BolRetailerApi.ObjectDefinitions.OrderItemCancellationContainer)">
             <summary>
             This endpoint can be used to either confirm a cancellation request by the customer or to cancel an order you yourself are unable to fulfil.
             </summary>
-            <param name="orderItemId">The id of the order item to cancel.</param>
-            <param name="cancelReason">The code representing the reason for cancellation of this item.</param>
+            <param name="orderItems">Items to cancel (use CancelReason enum)</param>
             <returns></returns>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.Orders.ShipOrderItem(System.String,Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo)">
+        <member name="M:Twinvision.BolRetailerApi.Orders.ShipOrderItem(Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo)">
             <summary>
             Ship a single order item within a customer order by providing shipping information. 
             In case you purchased a shipping label you can add the shippingLabelCode to this message. 
@@ -275,17 +267,12 @@
             <param name="processStatusIds">Array of objects (ProcessStatusId)</param>
             <returns></returns>
         </member>
-        <member name="T:Twinvision.BolRetailerApi.Reductions">
-            <summary>
-            Contains all functions used to communicate to BOL about reductions
-            </summary>
-        </member>
         <member name="T:Twinvision.BolRetailerApi.Returns">
             <summary>
             Contains all possible interactions with bol about Returns
             </summary>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.Returns.GetReturns(System.Int32,System.Boolean,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentType)">
+        <member name="M:Twinvision.BolRetailerApi.Returns.GetReturns(System.Int32,System.Boolean,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentMethod)">
             <summary>
             Get a paginated list of all returns, which are sorted by date in descending order.
             </summary>
@@ -316,7 +303,7 @@
             Contains all functions used to communicate to BOL about shipments
             </summary>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.Shipments.GetShipmentList(System.Int32,System.String,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentType)">
+        <member name="M:Twinvision.BolRetailerApi.Shipments.GetShipmentList(System.Int32,System.String,Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentMethod)">
             <summary>
             A paginated list to retrieve all your shipments up to 3 months old. The shipments will be sorted by date in descending order.
             </summary>
@@ -480,7 +467,7 @@
             <param name="clientSecret">The client Secret used for authentication.</param>
             <returns></returns>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Post(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Post(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
             <summary>
             Performs a post request filled with the given arguments.
             </summary>
@@ -499,7 +486,7 @@
             <param name="acceptHeader">The acceptheader</param>
             <returns>A promise of a HttpResponseMessage</returns>
         </member>
-        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Put(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+        <member name="M:Twinvision.BolRetailerApi.BolApiHttpRequestHandler.Put(System.String,System.Net.Http.HttpContent,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
             <summary>
             Performs a put request filled with the given arguments.
             </summary>
@@ -652,7 +639,7 @@
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.BundlePrice.Quantity">
             <summary></summary>
         </member>
-        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.BundlePrice.Price">
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.BundlePrice.UnitPrice">
             <summary></summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Condition.Name">
@@ -670,7 +657,7 @@
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.CreateOffer.Condition">
             <summary>Condition of the offer.</summary>
         </member>
-        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.CreateOffer.ReferenceCode">
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.CreateOffer.Reference">
             <summary>A user-defined reference that helps you identify this particular offer when receiving data from us. This element can optionally be left empty and has a maximum amount of 20 characters.</summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.CreateOffer.OnHoldByRetailer">
@@ -688,13 +675,13 @@
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.CreateOffer.Fulfilment">
             <summary>Fulfilment specifications for the offer.</summary>
         </member>
-        <member name="F:Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentType.FBB">
+        <member name="F:Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentMethod.FBB">
             <summary>FulfilledByBol</summary>
         </member>
-        <member name="F:Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentType.FBR">
+        <member name="F:Twinvision.BolRetailerApi.ObjectDefinitions.FulFilmentMethod.FBR">
             <summary>FulfilledByRetailer</summary>
         </member>
-        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Fulfilment.Type">
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Fulfilment.Method">
             <summary>Specifies whether this shipment has been fulfilled by the retailer (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.</summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Fulfilment.DeliveryCode">
@@ -723,11 +710,17 @@
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo.ShipmentReference">
             <summary>Used for administration purposes.</summary>
         </member>
-        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo.ShippingLabelCode">
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo.ShippingLabelId">
             <summary>Specifies shipping label to be used for this shipment. Can be retrieved through the shipping label endpoint.</summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.ShippingInfo.Transport">
             <summary>TransportInstruction</summary>
+        </member>
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.SmallFulfilment.Method">
+            <summary>Specifies whether this shipment has been fulfilled by the retailer (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.</summary>
+        </member>
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.SmallFulfilment.DeliveryCode">
+            <summary>The delivery promise that applies to this offer. Valid codes: ("24uurs-23","24uurs-22","24uurs-21","24uurs-20","24uurs-19","24uurs-18","24uurs-17","24uurs-16","24uurs-15","24uurs-14","24uurs-13","24uurs-12","1-2d","2-3d","3-5d","4-8d","1-8d")</summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Stock.Amount">
             <summary>
@@ -750,7 +743,7 @@
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.Transport.TrackAndTrace">
             <summary>The track and trace code that is associated with this transport.</summary>
         </member>
-        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.UpdateOffer.ReferenceCode">
+        <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.UpdateOffer.Reference">
             <summary>A user-defined reference that helps you identify this particular offer when receiving data from us. This element can optionally be left empty and has a maximum amount of 20 characters.</summary>
         </member>
         <member name="P:Twinvision.BolRetailerApi.ObjectDefinitions.UpdateOffer.OnHoldByRetailer">

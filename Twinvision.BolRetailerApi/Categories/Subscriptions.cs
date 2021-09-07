@@ -24,7 +24,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<SubscriptionsContainer> GetPushNotificationSubscriptions()
         {
-            var response = await Get($"/subscriptions", acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+            var response = await Get($"/subscriptions", acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<SubscriptionsContainer>(response).ConfigureAwait(false);
         }
 
@@ -36,9 +36,9 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<StatusResponse> CreatePushNotificationSubscription(CreateNotificationSubscription notificationSubscription)
         {
-            using (var content = BolApiHelper.BuildContentFromObject(notificationSubscription, AcceptHeaders.V4Json))
+            using (var content = BolApiHelper.BuildContentFromObject(notificationSubscription, AcceptHeaders.V5Json))
             {
-                var response = await Post("/subscriptions", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                var response = await Post("/subscriptions", content, acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
@@ -50,9 +50,9 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<StatusResponse> SendTestPushNotification()
         {
-            using (var content = BolApiHelper.BuildContentFromObject(new object { }, AcceptHeaders.V4Json))
+            using (var content = BolApiHelper.BuildContentFromObject(new object { }, AcceptHeaders.V5Json))
             {
-                var response = await Post("/subscriptions/test", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                var response = await Post("/subscriptions/test", content, acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
@@ -65,7 +65,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<NotificationSubscription> GetPushNotificationSubscriptionById(int subscriptionId)
         {
-            var response = await Get($"/subscriptions/{subscriptionId}", acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+            var response = await Get($"/subscriptions/{subscriptionId}", acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<NotificationSubscription>(response).ConfigureAwait(false);
         }
 
@@ -78,9 +78,9 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<StatusResponse> UpdatePushNotificationSubscription(int subscriptionId, CreateNotificationSubscription notificationSubscription)
         {
-            using (var content = BolApiHelper.BuildContentFromObject(notificationSubscription, AcceptHeaders.V4Json))
+            using (var content = BolApiHelper.BuildContentFromObject(notificationSubscription, AcceptHeaders.V5Json))
             {
-                var response = await Put($"/subscriptions/{subscriptionId}", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                var response = await Put($"/subscriptions/{subscriptionId}", content, acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
@@ -93,7 +93,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<StatusResponse> DeletePushNotificationSubscription(int subscriptionId)
         {
-            var response = await Delete($"/subscriptions/{subscriptionId}", acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+            var response = await Delete($"/subscriptions/{subscriptionId}", acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
         }
     }

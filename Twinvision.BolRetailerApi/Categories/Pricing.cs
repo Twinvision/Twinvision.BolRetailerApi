@@ -27,7 +27,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns>A list of retail prices and countries</returns>
         public async Task<RetailPricing> GetRetailPricingInformationForEAN(string ean)
         {
-            var response = await Get($"/pricing/retail-prices/{ean}", acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+            var response = await Get($"/pricing/retail-prices/{ean}", acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<RetailPricing>(response).ConfigureAwait(false);
         }
     }

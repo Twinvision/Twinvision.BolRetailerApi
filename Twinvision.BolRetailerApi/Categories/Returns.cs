@@ -25,7 +25,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="handled">The status of the returns you wish to see, shows either handled or unhandled returns.</param>
         /// <param name="fulfilmentMethod">The fulfilment method. Fulfilled by the retailer (FBR) or fulfilled by bol.com (FBB).</param>
         /// <returns></returns>
-        public async Task<ReturnsResponse> GetReturns(int page = 1, bool handled = false, FulFilmentType fulfilmentMethod = FulFilmentType.FBR)
+        public async Task<ReturnsResponse> GetReturns(int page = 1, bool handled = false, FulFilmentMethod fulfilmentMethod = FulFilmentMethod.FBR)
         {
             var queryParameters = new Dictionary<string, string>()
             {
@@ -42,10 +42,10 @@ namespace Twinvision.BolRetailerApi
         /// </summary>
         /// <param name="rmaId">The RMA (Return Merchandise Authorization) id that identifies this particular return.</param>
         /// <returns></returns>
-        public async Task<RMAReturn> GetReturnByRMAId(int rmaId)
+        public async Task<ReturnsResponse> GetReturnByRMAId(int rmaId)
         {
             var response = await Get($"/returns/" + rmaId.ToString()).ConfigureAwait(false);
-            return await BolApiHelper.GetContentFromResponse<RMAReturn>(response).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<ReturnsResponse>(response).ConfigureAwait(false);
         }
 
         /// <summary>

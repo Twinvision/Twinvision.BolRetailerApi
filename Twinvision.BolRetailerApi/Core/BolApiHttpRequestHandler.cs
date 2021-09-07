@@ -111,8 +111,9 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns>A promise of a HttpResponseMessage</returns>
-        protected async Task<HttpResponseMessage> Post(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
+        protected async Task<HttpResponseMessage> Post(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json, string contentType = AcceptHeaders.V5Json)
         {
+            content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
             return await ApiHttpRequest(path, (uri) => { return HttpClient.PostAsync(uri, content); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
@@ -123,7 +124,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns>A promise of a HttpResponseMessage</returns>
-        protected async Task<HttpResponseMessage> Get(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
+        protected async Task<HttpResponseMessage> Get(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json)
         {
             return await ApiHttpRequest(path, (uri) => { return HttpClient.GetAsync(uri); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
@@ -136,8 +137,9 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns>A promise of a HttpResponseMessage</returns>
-        protected async Task<HttpResponseMessage> Put(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
+        protected async Task<HttpResponseMessage> Put(string path, HttpContent content, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json, string contentType = AcceptHeaders.V5Json)
         {
+            content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
             return await ApiHttpRequest(path, (uri) => { return HttpClient.PutAsync(uri, content); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
 
@@ -148,7 +150,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns>A promise of a HttpResponseMessage</returns>
-        protected async Task<HttpResponseMessage> Delete(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
+        protected async Task<HttpResponseMessage> Delete(string path, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json)
         {
             return await ApiHttpRequest(path, (uri) => { return HttpClient.DeleteAsync(uri); }, queryParameters, acceptHeader).ConfigureAwait(false);
         }
@@ -162,7 +164,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns></returns>
-        protected async Task<HttpResponseMessage> ApiHttpRequest(string path, Func<Uri, Task<HttpResponseMessage>> httpRequest, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V3Json)
+        protected async Task<HttpResponseMessage> ApiHttpRequest(string path, Func<Uri, Task<HttpResponseMessage>> httpRequest, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json)
         {
             string requestUrl = (UseDemoEnvironment ? BolApiTestUrl : BolApiUrl) + path;
             var builder = new UriBuilder(requestUrl);

@@ -15,7 +15,7 @@ namespace Twinvision.BolRetailerApi
 {
     public class StatusResponse
     {
-        public string Id { get; set; }
+        public string ProcessStatusId { get; set; }
         public string EntityId { get; set; }
         public string EventType { get; set; }
         public string Description { get; set; }

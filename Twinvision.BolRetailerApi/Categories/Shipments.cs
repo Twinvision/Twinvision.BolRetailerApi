@@ -24,7 +24,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="page">The fulfilment method. Fulfilled by the retailer (FBR) or fulfilled by bol.com (FBB).</param>
         /// <param name="fulFilmentType">The id of the order. Only valid without fulfilment-method. The default fulfilment-method is ignored.</param>
         /// <returns></returns>
-        public async Task<ShipmentsContainer> GetShipmentList(int page = 1, string orderId = "", FulFilmentType fulFilmentType = FulFilmentType.FBR)
+        public async Task<ShipmentsContainer> GetShipmentList(int page = 1, string orderId = "", FulFilmentMethod fulFilmentType = FulFilmentMethod.FBR)
         {
             var queryParameters = new Dictionary<string, string>
             {

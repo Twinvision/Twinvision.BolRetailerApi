@@ -25,7 +25,7 @@ namespace Twinvision.BolRetailerApi
         /// <param name="page">The requested page number with a pagesize of 50</param>
         /// <param name="fulFilmentType">The fulfilment method. Fulfilled by the retailer (FBR) or fulfilled by bol.com (FBB).</param>
         /// <returns></returns>
-        public async Task<OrdersResponse> GetOpenOrders(int page = 1, FulFilmentType fulFilmentType = FulFilmentType.FBR)
+        public async Task<OrdersResponse> GetOpenOrders(int page = 1, FulFilmentMethod fulFilmentType = FulFilmentMethod.FBR)
         {
             var queryParameters = new Dictionary<string, string>
             {
@@ -50,18 +50,13 @@ namespace Twinvision.BolRetailerApi
         /// <summary>
         /// This endpoint can be used to either confirm a cancellation request by the customer or to cancel an order you yourself are unable to fulfil.
         /// </summary>
-        /// <param name="orderItemId">The id of the order item to cancel.</param>
-        /// <param name="cancelReason">The code representing the reason for cancellation of this item.</param>
+        /// <param name="orderItems">Items to cancel (use CancelReason enum)</param>
         /// <returns></returns>
-        public async Task<StatusResponse> CancelOrderByOrderItemId(string orderItemId, CancelReason cancelReason)
+        public async Task<StatusResponse> CancelOrderByOrderItemId(OrderItemCancellationContainer orderItemsContainer)
         {
-            var newObject = new
+            using (var content = BolApiHelper.BuildContentFromObject(orderItemsContainer))
             {
-                reasonCode = cancelReason.ToString()
-            };
-            using (var content = BolApiHelper.BuildContentFromObject(newObject))
-            {
-                var response = await Put($"/orders/{orderItemId}/cancellation", content).ConfigureAwait(false);
+                var response = await Put($"/orders/cancellation", content).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
@@ -75,11 +70,11 @@ namespace Twinvision.BolRetailerApi
         /// <param name="orderItemId">The order item being confirmed.</param>
         /// <param name="shippingInfo"></param>
         /// <returns></returns>
-        public async Task<StatusResponse> ShipOrderItem(string orderItemId, ShippingInfo shippingInfo)
+        public async Task<StatusResponse> ShipOrderItem(ShippingInfo shippingInfo)
         {
             using (var content = BolApiHelper.BuildContentFromObject(shippingInfo))
             {
-                var response = await Put($"/orders/{orderItemId}/shipment", content).ConfigureAwait(false);
+                var response = await Put($"/orders/shipment", content).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }

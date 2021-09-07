@@ -7,20 +7,16 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     public class OrderItemDetails
     {
         public string OrderItemId { get; set; }
-        public string OfferReference { get; set; }
-        public string Ean { get; set; }
-        public string Title { get; set; }
+        public bool CancellationRequest { get; set; }
+        public Fulfilment Fulfilment { get; set; }
+        public Offer Offer { get; set; }
+        public Product Product { get; set; }
         public int Quantity { get; set; }
-        public float OfferPrice { get; set; }
-        public string OfferId { get; set; }
-        public float TransactionFee { get; set; }
-        public DateTime? LatestDeliveryDate { get; set; }
-        public DateTime ExpiryDate { get; set; }
-        public DateTime? ExactDeliveryDate { get; set; }
-        public string OfferCondition { get; set; }
-        public bool CancelRequest { get; set; }
-        public string FulfilmentMethod { get; set; }
-        public AdditionalService[] AdditionalServices { get; set; }
+        public int QuantityShipped { get; set; }
+        public int QuantityCancelled { get; set; }
+        public float UnitPrice { get; set; }
+        public float Commission { get; set; }
+        public List<AdditionalService> AdditionalServices { get; set; }
     }
 
 }

@@ -8,8 +8,8 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     {
         public string Ean { get; set; }
         public string Bsku { get; set; }
-        public int NckStock { get; set; }
-        public int Stock { get; set; }
+        public int GradedStock { get; set; }
+        public int RegularStock { get; set; }
         public string Title { get; set; }
     }
 }

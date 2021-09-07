@@ -17,10 +17,9 @@ namespace Twinvision.BolRetailerApi
         }
 
         //retailer/purchasable-shippinglabels/{order-item-id}
-
         public async Task<PurchasableShippingLabelContainer> GetShippingLabelOrderItemId(string orderItemId)
         {
-            var response = await Get($"/purchasable-shippinglabels/{orderItemId}").ConfigureAwait(false);
+            var response = await Get($"/shipping-labels/{orderItemId}").ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<PurchasableShippingLabelContainer>(response).ConfigureAwait(false);
         }
     }

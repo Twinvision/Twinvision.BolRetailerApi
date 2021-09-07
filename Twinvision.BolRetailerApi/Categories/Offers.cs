@@ -59,7 +59,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         public async Task<string> RetrieveOfferExportFile(string offerExportId)
         {
-            var response = await Get("/offers/export/" + offerExportId, acceptHeader: AcceptHeaders.V3Csv).ConfigureAwait(false);
+            var response = await Get("/offers/export/" + offerExportId, acceptHeader: AcceptHeaders.V5Csv).ConfigureAwait(false);
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
@@ -100,7 +100,7 @@ namespace Twinvision.BolRetailerApi
                     await Task.Delay(1000, innerCancellationToken).ConfigureAwait(false);
                     firstRequest = false;
                 }
-                exportStatus = await BolApiCaller.ProcessStatus.GetStatusByProcessId(offerExportRequest.Id).ConfigureAwait(false);
+                exportStatus = await BolApiCaller.ProcessStatus.GetStatusByProcessId(offerExportRequest.ProcessStatusId).ConfigureAwait(false);
                 if (exportStatus.Status == "FAILURE")
                 {
                     throw new BolRetailerApiException(exportStatus.ErrorMessage);
@@ -182,7 +182,6 @@ namespace Twinvision.BolRetailerApi
         }
 
         /// <summary>
-        /// V4 BETA Request an unpublished offer report
         /// Request an unpublished offer report containing all unpublished offers and reasons.
         /// </summary>
         /// <param name="fileFormatContainer">File format container defaults to "CSV"</param>
@@ -192,22 +191,21 @@ namespace Twinvision.BolRetailerApi
             {
                 fileFormatContainer = new FileFormatContainer("CSV");
             }
-            using (var content = BolApiHelper.BuildContentFromObject(fileFormatContainer, AcceptHeaders.V4Json))
+            using (var content = BolApiHelper.BuildContentFromObject(fileFormatContainer, AcceptHeaders.V5Json))
             {
-                var response = await Post($"/offers/unpublished", content, acceptHeader: AcceptHeaders.V4Json).ConfigureAwait(false);
+                var response = await Post($"/offers/unpublished", content, acceptHeader: AcceptHeaders.V5Json).ConfigureAwait(false);
                 return await BolApiHelper.GetContentFromResponse<StatusResponse>(response).ConfigureAwait(false);
             }
         }
 
         /// <summary>
-        /// V4 BETA Retrieve an unpublished offer report by report id
         /// Retrieve an unpublished offer report containing all unpublished offers and reasons.
         /// </summary>
         /// <param name="reportId">Unique identifier for unpublished offer report.</param>
         /// <returns></returns>
         public async Task<string> RetrieveUnpublishedOfferReport(string reportId)
         {
-            var response = await Get($"/offers/unpublished/{reportId}", acceptHeader: AcceptHeaders.V4Csv).ConfigureAwait(false);
+            var response = await Get($"/offers/unpublished/{reportId}", acceptHeader: AcceptHeaders.V5Csv).ConfigureAwait(false);
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }

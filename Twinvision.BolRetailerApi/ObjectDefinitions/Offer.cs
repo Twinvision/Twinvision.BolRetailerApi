@@ -8,7 +8,7 @@ namespace Twinvision.BolRetailerApi.ObjectDefinitions
     {
         public string OfferId { get; set; }
         public string Ean { get; set; }
-        public string ReferenceCode { get; set; }
+        public string Reference { get; set; }
         public bool OnHoldByRetailer { get; set; }
         public string UnknownProductTitle { get; set; }
         public PricingContainer Pricing { get; set; }

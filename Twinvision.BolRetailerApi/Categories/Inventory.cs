@@ -27,11 +27,11 @@ namespace Twinvision.BolRetailerApi
             };
             if (stockType != StockType.None)
             {
-                queryParameters.Add("state", stockType.ToString().ToLower());
+                queryParameters.Add("state", stockType.ToString().ToUpper());
             }
             if (stockAmount != StockAmount.None)
             {
-                queryParameters.Add("stock", stockAmount.ToString().ToLower());
+                queryParameters.Add("stock", stockAmount.ToString().ToUpper());
             }
             if(quantityRange != null)
             {
