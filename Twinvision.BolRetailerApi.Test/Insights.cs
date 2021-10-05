@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi.Test
 {
@@ -47,6 +48,21 @@ namespace Twinvision.BolRetailerApi.Test
             }, 2019, 10);
 
             Assert.IsTrue(indicator.PerformanceIndicators[0].Name == "CANCELLATIONS");
+        }
+
+
+        [TestMethod]
+        public async Task GetSalesForeCast()
+        {
+            var salesForeCast = await bolApiCaller.Insights.GetSalesForeCast("91c28f60-ed1d-4b85-e053-828b620a4ed5", "12");
+            Assert.IsTrue(salesForeCast.Name == "SALES_FORECAST");
+        }
+
+        [TestMethod]
+        public async Task GetSearchTerms()
+        {
+            var searchTerms = await bolApiCaller.Insights.GetSearchTerms("Mondkapje", EPeriod.WEEK, 2);
+            Assert.IsTrue(searchTerms.Countries.Length > 0);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Twinvision.BolRetailerApi.Containers;
+using Twinvision.BolRetailerApi.ObjectDefinitions;
 
 namespace Twinvision.BolRetailerApi
 {
@@ -39,6 +40,30 @@ namespace Twinvision.BolRetailerApi
             };
             var response = await Get("/insights/performance/indicator", queryParameters).ConfigureAwait(false);
             return await BolApiHelper.GetContentFromResponse<PerformanceIndicatorsContainer>(response).ConfigureAwait(false);
+        }
+
+        public async Task<SalesForeCast> GetSalesForeCast(string offerId, string weeksAhead)
+        {
+            var queryParameters = new Dictionary<string, string>()
+            {
+                { "offer-id", offerId },
+                { "weeks-ahead", weeksAhead }
+            };
+            var response = await Get("/insights/sales-forecast", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<SalesForeCast>(response).ConfigureAwait(false);
+        }
+
+        public async Task<SearchTerms> GetSearchTerms(string searchTerm, EPeriod period, int numberOfPeriods, bool relatedSearchTerms = false)
+        {
+            var queryParameters = new Dictionary<string, string>()
+            {
+                { "search-term", searchTerm },
+                { "period", period.ToString() },
+                { "number-of-periods", numberOfPeriods.ToString() },
+                { "related-search-terms", relatedSearchTerms.ToString() }
+            };
+            var response = await Get("/insights/search-terms", queryParameters).ConfigureAwait(false);
+            return await BolApiHelper.GetContentFromResponse<SearchTerms>(response).ConfigureAwait(false);
         }
     }
 }

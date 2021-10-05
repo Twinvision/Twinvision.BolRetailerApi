@@ -4,10 +4,12 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <Description>Class definitions for the Bol Retailer Api</Description>
     <Copyright>All Rights Reserved - Twinvision</Copyright>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>Twinvision.BolRetailerApi\Twinvision.BolRetailerApi.xml</DocumentationFile>
+    <PlatformTarget></PlatformTarget>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
