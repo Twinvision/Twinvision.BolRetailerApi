@@ -3,6 +3,8 @@
 # BolRetailerApi
 A C# .NET Standard class library of all the endpoints for the [BOL RETAILER API](https://api.bol.com/retailer/public)
 
+The latest version supports V5 of the BOL retailer API.
+
 ![Build Status](https://dev.azure.com/TwinvisionSoftware/BolRetailerApi/_apis/build/status/Twinvision.Twinvision.BolRetailerApi?branchName=master)
 
 This project aims at creating a library which forces you to fill in all required information to perform each request.
