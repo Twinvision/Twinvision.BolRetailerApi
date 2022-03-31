@@ -13,12 +13,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Orders : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Orders(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// Gets a paginated list of all open orders sorted by date in descending order.
         /// </summary>

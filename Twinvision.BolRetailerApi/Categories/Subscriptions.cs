@@ -11,12 +11,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Subscriptions : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Subscriptions(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// V4 BETA: Get push notification subscriptions
         /// Retrieve a list of all configured and active push notification subscriptions.

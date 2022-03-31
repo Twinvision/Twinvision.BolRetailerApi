@@ -47,19 +47,19 @@ namespace Twinvision.BolRetailerApi
         {
             Task.Run(() => BolApiHttpRequestHandler.Initialize(clientId, clientSecret, useDemoEnvironment)).Wait();
 
-            Commissions = new Commisions(this);
-            Insights = new Insights(this);
-            Inventory = new Inventory(this);
-            Invoices = new Invoices(this);
+            Commissions = new Commisions();
+            Insights = new Insights();
+            Inventory = new Inventory();
+            Invoices = new Invoices();
             Offers = new Offers(this);
-            Orders = new Orders(this);
-            Pricing = new Pricing(this);
-            ProcessStatus = new ProcessStatuses(this);
-            Returns = new Returns(this);
-            Shipments = new Shipments(this);
-            ShippingLabels = new ShippingLabels(this);
-            Subscriptions = new Subscriptions(this);
-            Transports = new Transports(this);
+            Orders = new Orders();
+            Pricing = new Pricing();
+            ProcessStatus = new ProcessStatuses();
+            Returns = new Returns();
+            Shipments = new Shipments();
+            ShippingLabels = new ShippingLabels();
+            Subscriptions = new Subscriptions();
+            Transports = new Transports();
         }
     }
 }

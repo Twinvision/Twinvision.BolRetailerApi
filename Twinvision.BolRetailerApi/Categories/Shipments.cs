@@ -11,12 +11,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Shipments : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Shipments(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// A paginated list to retrieve all your shipments up to 3 months old. The shipments will be sorted by date in descending order.
         /// </summary>

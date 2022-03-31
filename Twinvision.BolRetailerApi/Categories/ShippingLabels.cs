@@ -10,12 +10,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class ShippingLabels : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public ShippingLabels(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         //retailer/purchasable-shippinglabels/{order-item-id}
         public async Task<PurchasableShippingLabelContainer> GetShippingLabelOrderItemId(string orderItemId)
         {

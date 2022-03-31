@@ -13,12 +13,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Inventory : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Inventory(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         public async Task<OfferListContainer> GetLVBOrFBBInventory(int page = 1, StockType stockType = StockType.None, StockAmount stockAmount = StockAmount.None, string quantityRange = null, string query = null)
         {
             var queryParameters = new Dictionary<string, string>()

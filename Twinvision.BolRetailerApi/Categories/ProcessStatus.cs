@@ -13,12 +13,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class ProcessStatuses : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public ProcessStatuses(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// Retrieve a list of process statuses, which shows information regarding previously executed PUT/POST requests in descending order. 
         /// You need to supply an entity id and event type.

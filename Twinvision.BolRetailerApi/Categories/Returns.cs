@@ -12,12 +12,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Returns : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Returns(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// Get a paginated list of all returns, which are sorted by date in descending order.
         /// </summary>

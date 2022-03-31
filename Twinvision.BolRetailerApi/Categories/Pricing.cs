@@ -11,12 +11,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Pricing : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Pricing(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// V4 BETA: Retrieve retail price information for an EAN.
         /// Currently this endpoint only supports the allowable retail price and can support the following use cases:

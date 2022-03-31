@@ -10,12 +10,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Invoices : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Invoices(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// Gets a list of invoices, by default from the past 4 weeks. 
         /// The optional period-start and period-end parameters can be used together to retrieve invoices from a specific date range in the past, the period can be no longer than 31 days. 

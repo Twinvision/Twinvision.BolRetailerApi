@@ -13,12 +13,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Insights : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Insights(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         public async Task<PerformanceIndicatorsContainer> GetPerformanceIndicators(PerformanceName[] performanceNames, int year, int week)
         {
             if(performanceNames.Length == 0)

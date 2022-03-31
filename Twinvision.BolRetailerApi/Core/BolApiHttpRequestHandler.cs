@@ -12,19 +12,25 @@ using Twinvision.BolRetailerApi.ObjectDefinitions;
 namespace Twinvision.BolRetailerApi
 {
     /// <summary>
-    /// Class used to standardize api request calls to boll.
+    /// Class used to standardize api request calls to Bol.
     /// </summary>
     public abstract class BolApiHttpRequestHandler
     {
+        private const string BolApiBaseUrl = "https://api.bol.com/";
         /// <summary>
         /// The Bol api base url.
         /// </summary>
-        private const string BolApiUrl = "https://api.bol.com/retailer";
+        private const string BolApiSharedUrl = BolApiBaseUrl + "shared";
+        
+        /// <summary>
+        /// The Bol api base url.
+        /// </summary>
+        private const string BolApiRetailerUrl = BolApiBaseUrl + "retailer";
 
         /// <summary>
         /// The bol api test base url.
         /// </summary>
-        private const string BolApiTestUrl = "https://api.bol.com/retailer-demo";
+        private const string BolApiRetailerDemoUrl = BolApiBaseUrl + "retailer-demo";
 
         /// <summary>
         /// The url which is used to validate the given credentials.
@@ -35,6 +41,11 @@ namespace Twinvision.BolRetailerApi
         /// If set to true all api calls will be done to a test environment of BOL
         /// </summary>
         private static bool UseDemoEnvironment { get; set; }
+
+        /// <summary>
+        /// If set to true use shared endpoint otherwise retail or retail-demo endpoint
+        /// </summary>
+        private bool UseSharedEndPoint { get; set; } = false;
 
         /// <summary>
         /// The client Id used for authentication.
@@ -164,9 +175,9 @@ namespace Twinvision.BolRetailerApi
         /// <param name="queryParameters">The parameters which get inserted as a query string</param>
         /// <param name="acceptHeader">The acceptheader</param>
         /// <returns></returns>
-        protected async Task<HttpResponseMessage> ApiHttpRequest(string path, Func<Uri, Task<HttpResponseMessage>> httpRequest, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V5Json)
+        protected async Task<HttpResponseMessage> ApiHttpRequest(string path, Func<Uri, Task<HttpResponseMessage>> httpRequest, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V7Json)
         {
-            string requestUrl = (UseDemoEnvironment ? BolApiTestUrl : BolApiUrl) + path;
+            string requestUrl = (UseDemoEnvironment ? BolApiRetailerDemoUrl : BolApiRetailerUrl) + path;
             var builder = new UriBuilder(requestUrl);
             if (queryParameters != null)
             {

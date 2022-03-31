@@ -14,12 +14,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Commisions : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Commisions(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         /// <summary>
         /// Gets all commissions and possible reductions by EAN, condition and optionally price. 
         /// No more than 100 EAN`s can be sent in a single request.

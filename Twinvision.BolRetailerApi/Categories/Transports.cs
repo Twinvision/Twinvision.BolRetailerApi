@@ -11,12 +11,6 @@ namespace Twinvision.BolRetailerApi
     /// </summary>
     public class Transports : BolApiHttpRequestHandler
     {
-        private BolApiCaller BolApiCaller;
-        public Transports(BolApiCaller bolApiCaller)
-        {
-            BolApiCaller = bolApiCaller;
-        }
-
         public async Task<StatusResponse> AddTransportInformation(string transportId, Transport transport)
         {
             using (var content = BolApiHelper.BuildContentFromObject(transport))
