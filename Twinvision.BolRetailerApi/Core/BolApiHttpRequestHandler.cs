@@ -45,7 +45,7 @@ namespace Twinvision.BolRetailerApi
         /// <summary>
         /// If set to true use shared endpoint otherwise retail or retail-demo endpoint
         /// </summary>
-        private bool UseSharedEndPoint { get; set; } = false;
+        protected bool UseSharedEndPoint { get; set; } = false;
 
         /// <summary>
         /// The client Id used for authentication.
@@ -177,7 +177,7 @@ namespace Twinvision.BolRetailerApi
         /// <returns></returns>
         protected async Task<HttpResponseMessage> ApiHttpRequest(string path, Func<Uri, Task<HttpResponseMessage>> httpRequest, Dictionary<string, string> queryParameters = null, string acceptHeader = AcceptHeaders.V7Json)
         {
-            string requestUrl = (UseDemoEnvironment ? BolApiRetailerDemoUrl : BolApiRetailerUrl) + path;
+            string requestUrl = UseSharedEndPoint ? BolApiSharedUrl : (UseDemoEnvironment ? BolApiRetailerDemoUrl : BolApiRetailerUrl) + path;
             var builder = new UriBuilder(requestUrl);
             if (queryParameters != null)
             {
